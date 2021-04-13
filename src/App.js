@@ -1,7 +1,22 @@
+import React from 'react'
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+
+const title = 'game';
+const URL = `http://api.tvmaze.com/search/shows?q=${title}`;
+
+const fetchShow = () => {
+  axios.get(URL)
+  .then(res => {
+    console.log(res.data);
+  })
+}
 
 function App() {
+
+  fetchShow();
+
   return (
     <div className="App">
       <header className="App-header">
