@@ -1,16 +1,21 @@
 import React from 'react'
 import './App.css';
+import {SearchBar, NavBar} from './components/'
+import {Statistics, ToWatch, Trendings, TVShows} from './pages/'
+import {BrowserRouter as Router, Route, Link} from 'react-router'
 
 function App() {
 
-  const URL = `http://api.tvmaze.com/search/shows?q=${title}`;
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>App</h1>
-      </header>
-    </div>
+    <>
+      <SearchBar/>
+
+      <Router>
+        <NavBar>
+
+        </NavBar>
+      </Router>
+    </>
   );
 }
 
