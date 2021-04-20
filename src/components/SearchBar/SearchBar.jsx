@@ -1,14 +1,30 @@
-import React, {useState} from 'react'
-import {useFetch} from '../../useFetch'
+import React, {useState, useEffect} from 'react'
 
 const SearchBar = () => {
 
     const [title, setTitle] = useState('');
     const url = `http://api.tvmaze.com/search/shows?q=${title}`;
+    const [result, setResult] = useState([]);
+
+    const handleTitle = (e) => {
+        var temp = e.target.value;
+        temp.replace(/\s/g, '-');
+        setTitle(temp);
+        console.log(title);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        useFetch(url);
+        console.log(url);
+        getTVShows(url);
+    }
+
+    const getTVShows = async (url) => {
+        const response = await fetch(url);
+        const result = await response.json();
+        setResult(result);
+        setTitle('');
+        console.log(result);
     }
 
     return (
@@ -20,9 +36,9 @@ const SearchBar = () => {
                     id="searchBar" 
                     name="searchBar"
                     value={title}
-                    onChange={(e) => {setTitle(e.target.value)}}
+                    onChange={handleTitle}
                 />
-                <button type="button" id='btn'>Submit</button>
+                <button type="submit" id='btn'>Submit</button>
             </form>
         </article>
     )
