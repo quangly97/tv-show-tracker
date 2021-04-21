@@ -3,12 +3,19 @@ import { useGlobalContext } from '../../context'
 
 const SearchResults = () => {
 
-    //const {result} = useGlobalContext();
+    const {results} = useGlobalContext();
 
     return (
-        <div>
-            <h1>SearchResult</h1>
-        </div>
+        <>
+            {
+                results.map((result, index) => {
+                    const {show} = result;
+                    return (
+                        <h1 key={index}>{show.name}</h1>
+                    )
+                })
+            }
+        </>
     )
 }
 

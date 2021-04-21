@@ -5,19 +5,18 @@ const AppContext = createContext();
 
 const AppProvider = ({children}) => {
     const url = 'http://api.tvmaze.com/search/shows?q=';
-    
-    const [result, setResult] = useState([]);
+    const [results, setResults] = useState([]);
     
     const getTVShows = async (title) => {
         const response = await axios.get(`${url}${title}`);
         console.log(response.data);
-        setResult(response);
+        setResults(response.data);
     }
 
     return (
         <AppContext.Provider value={{
             getTVShows,
-            result
+            results
         }}>
             {children}
         </AppContext.Provider>
