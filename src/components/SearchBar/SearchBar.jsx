@@ -9,11 +9,12 @@ const SearchBar = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         getTVShows(title);
+        setTitle('')
     }
 
     return (
         <article>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor={inputRef}>Show:</label>
                 <input 
                     type="text"

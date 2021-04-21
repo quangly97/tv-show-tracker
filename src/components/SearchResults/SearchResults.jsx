@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGlobalContext } from '../../context'
+import parse from 'html-react-parser'
 
 const SearchResults = () => {
 
@@ -8,10 +9,14 @@ const SearchResults = () => {
     return (
         <>
             {
-                results.map((result, index) => {
-                    const {show} = result;
+                results.map((result) => {
+                    const {show: {id, name, summary}} = result;
                     return (
-                        <h1 key={index}>{show.name}</h1>
+                        <section className="product" key={id}>
+                            <h3>{name}</h3>
+                            {summary && parse(summary)}
+                            <button>+</button>
+                        </section>
                     )
                 })
             }
