@@ -1,42 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
+import { useGlobalContext } from '../../context';
 
 const SearchBar = () => {
-
     const [title, setTitle] = useState('');
-    const url = `http://api.tvmaze.com/search/shows?q=${title}`;
-    const [result, setResult] = useState([]);
-
-    const handleTitle = (e) => {
-        var temp = e.target.value;
-        temp.replace(/\s/g, '-');
-        setTitle(temp);
-        console.log(title);
-    }
+    const inputRef = useRef(null);
+    const {getTVShows} = useGlobalContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(url);
-        getTVShows(url);
-    }
-
-    const getTVShows = async (url) => {
-        const response = await fetch(url);
-        const result = await response.json();
-        setResult(result);
-        setTitle('');
-        console.log(result);
+        getTVShows(title);
     }
 
     return (
         <article>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="searchBar">Show:</label>
+                <label htmlFor={inputRef}>Show:</label>
                 <input 
-                    type="text" 
-                    id="searchBar" 
-                    name="searchBar"
+                    type="text"
                     value={title}
-                    onChange={handleTitle}
+                    ref={inputRef}
+                    onChange={(e) => {setTitle(e.target.value)}}
                 />
                 <button type="submit" id='btn'>Submit</button>
             </form>
