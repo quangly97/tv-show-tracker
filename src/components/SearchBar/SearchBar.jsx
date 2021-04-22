@@ -15,7 +15,7 @@ const SearchBar = () => {
     return (
         <article>
             <form className="form" onSubmit={handleSubmit}>
-                <label htmlFor={inputRef}>Show:</label>
+                <label htmlFor={inputRef}>Show: </label>
                 <input 
                     type="text"
                     value={title}
