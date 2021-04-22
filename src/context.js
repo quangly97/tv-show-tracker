@@ -5,22 +5,22 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const url = "http://api.tvmaze.com/search/shows?q=";
-  const [results, setResults] = useState([]);
+  const [programs, setPrograms] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
 
-  const getTVShows = async (title) => {
+  const getPrograms = async (title) => {
     if (title) {
       const response = await axios.get(`${url}${title}`);
       console.log(response.data);
-      setResults(response.data);
+      setPrograms(response.data);
     }
   };
 
   return (
     <AppContext.Provider
       value={{
-        getTVShows,
-        results,
+        getPrograms,
+        programs,
         watchlist,
         setWatchlist,
       }}

@@ -4,11 +4,11 @@ import { useGlobalContext } from '../../context';
 const SearchBar = () => {
     const [title, setTitle] = useState('');
     const inputRef = useRef(null);
-    const {getTVShows} = useGlobalContext();
+    const {getPrograms} = useGlobalContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getTVShows(title);
+        getPrograms(title);
         setTitle('')
     }
 
