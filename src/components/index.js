@@ -1,5 +1,5 @@
 export { default as SearchBar } from './SearchBar/SearchBar'
 export { default as NavBar } from './NavBar/NavBar'
-export { default as SearchResults } from './SearchResults/SearchResults'
 export { default as WatchList } from './WatchList/WatchList'
 export { default as ProgramCard } from './ProgramCard/ProgramCard'
+export { default as SearchResults } from './SearchResults/SearchResults'

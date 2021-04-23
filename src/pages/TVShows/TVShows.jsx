@@ -1,9 +1,13 @@
 import React from 'react'
+import { SearchBar, SearchResults, WatchList } from '../../components/'
 
 const TVShows = () => {
+
     return (
         <div>
-            <h1>TVShows</h1>
+            <SearchBar/>
+            <SearchResults/>
+            <WatchList/>
         </div>
     )
 }

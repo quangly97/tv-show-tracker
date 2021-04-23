@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar } from './components/'
-import { Statistics, ToWatch, Trendings, TVShows, Error } from './pages/'
+import { Statistics, ToWatch, Trendings, TVShows, ProgramInformation, Error } from './pages/'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
         <Route path='/statistics'>
           <Statistics/>
         </Route>
+        <Route path='/programinformation/:id' children={<ProgramInformation/>}></Route>
         <Route path='*'>
           <Error/>
         </Route>
