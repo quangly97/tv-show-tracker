@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGlobalContext } from "../../context";
+import { ProgramCard } from '../'
 
 const WatchList = () => {
 
@@ -11,7 +12,7 @@ const WatchList = () => {
                 watchlist.map((program) => {
                     const {show: {name, id}} = program
                     return (
-                        <h3 key={id}>{name}</h3>
+                        <ProgramCard key={id} name={name} />
                     )
                 })
             }

@@ -1,10 +1,11 @@
 import React from 'react'
 
-const ProgramCard = () => {
+const ProgramCard = ({name}) => {
     return (
-        <div>
-            <h1>ProgramCard</h1>
-        </div>
+        <article>
+            <h3>{name}</h3>
+            <button className='btn'>Remove</button>
+        </article>
     )
 }
 

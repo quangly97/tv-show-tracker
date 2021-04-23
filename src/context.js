@@ -11,7 +11,6 @@ const AppProvider = ({ children }) => {
   const getPrograms = async (title) => {
     if (title) {
       const response = await axios.get(`${url}${title}`);
-      console.log(response.data);
       setPrograms(response.data);
     }
   };

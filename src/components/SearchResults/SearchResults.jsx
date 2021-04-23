@@ -7,7 +7,6 @@ const SearchResults = () => {
     const {programs, watchlist, setWatchlist} = useGlobalContext();
 
     const addToList = (program) => {
-        console.log(watchlist);
         if(!showInList(program.show.id)){
             setWatchlist([...watchlist, program]);
         }
