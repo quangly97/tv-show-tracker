@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   const url = "http://api.tvmaze.com/search/shows?q=";
   const [programs, setPrograms] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
 
   const getPrograms = async (title) => {
     if (title) {
@@ -15,13 +16,23 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getEpisodes = async (id) => {
+    if(id){
+      const episodeData = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`)
+      setEpisodes(episodeData.data);
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
         getPrograms,
+        getEpisodes,
         programs,
         watchlist,
         setWatchlist,
+        episodes,
+        setEpisodes
       }}
     >
       {children}
