@@ -12,7 +12,7 @@ const WatchList = () => {
                 watchlist.map((program) => {
                     const {show: {name, id}} = program
                     return (
-                        <ProgramCard key={id} name={name} />
+                        <ProgramCard key={id} name={name} id={id} />
                     )
                 })
             }

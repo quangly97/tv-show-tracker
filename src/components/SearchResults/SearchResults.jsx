@@ -10,7 +10,6 @@ const SearchResults = () => {
         if(!showInList(program.show.id)){
             setWatchlist([...watchlist, program]);
         }
-        
     }
 
     const showInList = (id) => {

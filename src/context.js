@@ -12,7 +12,7 @@ const AppProvider = ({ children }) => {
   const getPrograms = async (title) => {
     if (title) {
       const response = await axios.get(`${url}${title}`);
-      setPrograms(response.data.show);
+      setPrograms(response.data);
     }
   };
 
@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
         watchlist,
         setWatchlist,
         episodes,
-        setEpisodes
       }}
     >
       {children}
