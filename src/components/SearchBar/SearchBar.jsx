@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../context';
 const SearchBar = () => {
     const [title, setTitle] = useState('');
     const inputRef = useRef(null);
-    const {getPrograms} = useGlobalContext();
+    const { getPrograms } = useGlobalContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();

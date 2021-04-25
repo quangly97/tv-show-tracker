@@ -4,12 +4,12 @@ import { ProgramCard } from '../'
 
 const WatchList = () => {
 
-    const { watchlist } = useGlobalContext();
+    const { state } = useGlobalContext();
 
     return (
         <div>
             {
-                watchlist.map((program) => {
+                state.watchlist.map((program) => {
                     const {show: {name, id}} = program
                     return (
                         <ProgramCard key={id} name={name} id={id} />

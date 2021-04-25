@@ -2,11 +2,10 @@ import React from 'react'
 import { useGlobalContext } from '../../context'
 
 const ProgramCard = ({id, name}) => {
-    const { watchlist, setWatchlist } = useGlobalContext();
+    const { dispatch } = useGlobalContext();
 
     const removeProgram = (id) => {
-        const updatedWatchlist = watchlist.filter((program) => program.show.id != id);
-        setWatchlist(updatedWatchlist);
+        dispatch({ type: 'REMOVE_PROGRAM', payload: id })
     };
 
     return (

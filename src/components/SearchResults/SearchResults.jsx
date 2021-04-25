@@ -4,16 +4,16 @@ import parse from 'html-react-parser'
 
 const SearchResults = () => {
 
-    const {programs, watchlist, setWatchlist} = useGlobalContext();
+    const { programs, state, dispatch } = useGlobalContext();
 
     const addToList = (program) => {
         if(!showInList(program.show.id)){
-            setWatchlist([...watchlist, program]);
+            dispatch({ type: 'ADD_PROGRAM', payload: program})
         }
     }
 
     const showInList = (id) => {
-        if(watchlist.filter((program) => id === program.show.id).length > 0){
+        if(state.watchlist.filter((program) => id === program.show.id).length > 0){
             return true;
         }
         return false;
