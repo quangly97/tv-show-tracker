@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { EpisodeCounter } from '../../components/'
+import { useGlobalContext } from '../../context'
 
 const ToWatch = () => {
+
+    const { state } = useGlobalContext();
+
     return (
         <div>
-            <h1>ToWatch</h1>
+            {
+                state.watchlist.map((program) => {
+                    const {id, name, episodes} = program;
+                    return <EpisodeCounter key={id} name={name} episodes={episodes} />;
+                })
+            }
         </div>
     )
 }

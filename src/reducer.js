@@ -1,14 +1,14 @@
 export const reducer = (state, action) => {
     if(action.type === 'ADD_PROGRAM'){
-        const newProgram = [...state.watchlist, action.payload];
+        const updatedWatchlist = [...state.watchlist, action.payload];
         return {
             ...state,
-            watchlist: newProgram,
+            watchlist: updatedWatchlist,
             isModalOpen: true,
             modalContent: 'show added'
         }
     }else if(action.type === 'REMOVE_PROGRAM'){
-        const updatedWatchlist = state.watchlist.filter((program) => program.show.id !== action.payload);
+        const updatedWatchlist = state.watchlist.filter((program) => program.id !== action.payload);
         return {
             ...state,
             watchlist: updatedWatchlist,

@@ -10,7 +10,7 @@ const WatchList = () => {
         <div>
             {
                 state.watchlist.map((program) => {
-                    const {show: {name, id}} = program
+                    const { name, id } = program
                     return (
                         <ProgramCard key={id} name={name} id={id} />
                     )

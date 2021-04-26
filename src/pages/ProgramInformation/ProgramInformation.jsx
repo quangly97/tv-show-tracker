@@ -9,11 +9,9 @@ const ProgramInformation = () => {
     const [show, setShow] = useState('');
 
     useEffect(() => {
-        console.log(id);
         getEpisodes(id);
         const currentShow = data.find((program) => program.id === parseInt(id));
         setShow(currentShow.name);
-        console.log(episodes);
     }, [id]);
 
     return (

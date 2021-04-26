@@ -7,7 +7,6 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const url = "http://api.tvmaze.com/";
   const [programs, setPrograms] = useState([]);
-  const [episodes, setEpisodes] = useState([]);
 
   const defaultState = {
     watchlist: [],
@@ -27,8 +26,8 @@ const AppProvider = ({ children }) => {
 
   const getEpisodes = async (id) => {
     if(id){
-      const episodeData = await axios.get(`${url}shows/${id}/episodes`)
-      setEpisodes(episodeData.data);
+      const episodeData = await axios.get(`${url}shows/${id}/episodes`);
+      return episodeData.data;
     }
   }
 
@@ -40,7 +39,6 @@ const AppProvider = ({ children }) => {
         dispatch,
         state,
         programs,
-        episodes,
       }}
     >
       {children}
