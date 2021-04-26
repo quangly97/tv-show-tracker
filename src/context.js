@@ -39,6 +39,7 @@ const AppProvider = ({ children }) => {
         dispatch,
         state,
         programs,
+        setPrograms
       }}
     >
       {children}

@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { data } from '../../data'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../../context'
 
 const ProgramInformation = () => {
     const { id } = useParams();
-    const { getEpisodes, episodes } = useGlobalContext();
-    const [show, setShow] = useState('');
-
-    useEffect(() => {
-        getEpisodes(id);
-        const currentShow = data.find((program) => program.id === parseInt(id));
-        setShow(currentShow.name);
-    }, [id]);
+    const { state } = useGlobalContext();
+    const currentProgram = state.watchlist.find((program) => program.id === parseInt(id));
 
     return (
         <div>
-            <h3>{show}</h3>
+            <h3>{currentProgram.name}</h3>
             {
-                episodes.map((episode) => {
+                currentProgram.episodes.map((episode) => {
                     const { id, name, season, number } = episode;
                     return (
                       <section key={id}>
-                        <h4>{`${name} - Season: ${season} Episode: ${number}`}</h4>
+                        <h4>{`${name} - S${season} | E${number}`}</h4>
                       </section>
                     );
                 })

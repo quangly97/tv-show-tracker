@@ -6,7 +6,6 @@ const EpisodeCounter = ({name, episodes}) => {
     const [episodesLeft, setEpisodesLeft] = useState(0);
 
     useEffect(() => {
-        console.log('Activated')
         const current = episodes.find((episode) => episode.watched === false);
         setCurrentEpisode(current);
         const count = episodes.filter((episode) => episode.watched === false).length;
@@ -25,7 +24,7 @@ const EpisodeCounter = ({name, episodes}) => {
             <h2>{name}</h2>
             <h3>{episodesLeft}</h3>
             <h4>{currentEpisode.name}</h4>
-            <h5>{`Season: ${currentEpisode.season} Episode: ${currentEpisode.number}`}</h5>
+            <h5>{`S${currentEpisode.season} | E${currentEpisode.number}`}</h5>
             <button className='btn' onClick={() => handleClick(currentEpisode.id)}>Checkmark</button>
         </div>
     )
