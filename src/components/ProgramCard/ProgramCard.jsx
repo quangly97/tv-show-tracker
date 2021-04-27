@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGlobalContext } from '../../context'
+import { Link } from "react-router-dom";
 
 const ProgramCard = ({id, name}) => {
     const { dispatch } = useGlobalContext();
@@ -10,7 +11,7 @@ const ProgramCard = ({id, name}) => {
 
     return (
         <article>
-            <h3>{name}</h3>
+            <Link to={`/programinformation/${id}`}><h3>{name}</h3></Link>
             <button className='btn' onClick={() => removeProgram(id)}>Remove</button>
         </article>
     )

@@ -19,6 +19,7 @@ const SearchResults = () => {
             })
             const updatedProgram = {id, image, name, premiered, summary, episodes};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
+            dispatch({ type: 'ADD_EPISODES', payload: episodes });
         }
     }
 

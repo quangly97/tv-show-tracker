@@ -11,7 +11,8 @@ const AppProvider = ({ children }) => {
   const defaultState = {
     watchlist: [],
     isModalOpen: false,
-    modalContent: ''
+    modalContent: '',
+    episodelist: []
   }
   const [state, dispatch] = useReducer(reducer, defaultState);
 

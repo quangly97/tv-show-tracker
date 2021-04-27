@@ -26,6 +26,12 @@ export const reducer = (state, action) => {
             ...state, 
             isModalOpen: false
         }
+    }else if(action.type === 'ADD_EPISODES'){
+        const updatedEpisodes = state.episodelist.concat(action.payload);
+        return {
+            ...state,
+            episodelist: updatedEpisodes
+        }
     }else{
         throw new Error('no matching action type');
     }
