@@ -35,12 +35,13 @@ const ProgramInformation = () => {
             <h3>{currentProgram.name}</h3>
             {
                 currentProgram.episodes.map((episode, index) => {
-                    const { id, name, season, number, airdate, watched } = episode;
+                    const { id, name, season, number, airdate, watched, image } = episode;
                     return (
                       <section key={id}>
                         <span>
                           <h4>{`${name} - S${season} | E${number}`}</h4>
                           <h5>{`${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)}`}</h5>
+                          {image && <img alt={name} src={image.medium} />}
                           <button className="btn" onClick={() => toggleWatched(episode, index)}>{`${watched}`}</button>
                         </span>
                       </section>
