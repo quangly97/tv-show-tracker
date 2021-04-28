@@ -6,10 +6,14 @@ const ToWatch = () => {
 
     const { state } = useGlobalContext();
 
+    const sorted = state.watchlist.sort((a, b) => {
+        return b.episodes.length - a.episodes.length;
+    })
+
     return (
         <div>
             {
-                state.watchlist.map((program) => {
+                sorted.map((program) => {
                     const {id, name, episodes} = program;
                     return <EpisodeCounter key={id} name={name} episodes={episodes} />;
                 })

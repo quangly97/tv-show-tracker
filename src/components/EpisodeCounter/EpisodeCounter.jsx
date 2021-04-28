@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 
 const EpisodeCounter = ({name, episodes}) => {
 
@@ -19,13 +20,24 @@ const EpisodeCounter = ({name, episodes}) => {
         setCurrentEpisode(watched);
     }
 
+    const getName = (name) => {
+      const newName = name.replace(/\s/g, "-").toLowerCase();
+      return newName;
+    };
+
     return (
         <div>
-            <h2>{name}</h2>
-            <h3>{episodesLeft}</h3>
-            <h4>{currentEpisode.name}</h4>
-            <h5>{`S${currentEpisode.season} | E${currentEpisode.number}`}</h5>
-            <button className='btn' onClick={() => handleClick(currentEpisode.id)}>Checkmark</button>
+            {
+                currentEpisode && (
+                    <div>
+                        <h2>{name}</h2>
+                        <h3>{episodesLeft}</h3>
+                        <Link to={`/${getName(name)}/${currentEpisode.id}`}><h4>{currentEpisode.name}</h4></Link>
+                        <h5>{`S${currentEpisode.season} | E${currentEpisode.number}`}</h5>
+                        <button className='btn' onClick={() => handleClick(currentEpisode.id)}>Checkmark</button>
+                    </div>
+                )
+            }
         </div>
     )
 }
