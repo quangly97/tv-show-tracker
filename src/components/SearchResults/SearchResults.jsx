@@ -11,9 +11,9 @@ const SearchResults = () => {
         if(!showInList(id)){
             const episodeList = await getEpisodes(id);
             const episodes = episodeList.map((episode) => {
-                const {airdate, id, image, name, number, season, summary} = episode;
+                const {airdate, airstamp, id, image, name, number, season, summary} = episode;
                 return {
-                    airdate, id, image, name, number, season, summary, 
+                    airdate, airstamp, id, image, name, number, season, summary, 
                     watched: false
                 }
             })
