@@ -52,7 +52,7 @@ const Timer = ({airstamp}) => {
         if(years > 0){
             return <h2>{`${years} YEARS ${months} MONTHS ${days} DAYS`}</h2>;
         }else if(months > 0){
-            return <h2>{`${months} MONTHS ${days} DAYS ${hours}`}</h2>
+            return <h2>{`${months} MONTHS ${days} DAYS ${hours} HOURS`}</h2>
         }else if(days > 0){
             return <h2>{`${days} DAYS ${hours} HOURS ${minutes} MINUTES`}</h2>
         }else{

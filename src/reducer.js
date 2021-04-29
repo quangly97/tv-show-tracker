@@ -7,6 +7,12 @@ export const reducer = (state, action) => {
             isModalOpen: true,
             modalContent: 'show added'
         }
+    }else if(action.type === 'ADD_EPISODES'){
+        const updatedEpisodes = state.episodelist.concat(action.payload);
+        return {
+            ...state,
+            episodelist: updatedEpisodes
+        }
     }else if(action.type === 'REMOVE_PROGRAM'){
         const updatedWatchlist = state.watchlist.filter((program) => program.id !== action.payload);
         return {
@@ -14,6 +20,22 @@ export const reducer = (state, action) => {
             watchlist: updatedWatchlist,
             isModalOpen: true,
             modalContent: 'removed show'
+        }
+    }else if(action.type === 'SORT_ALPHABETICAL'){
+        const sorted = state.watchlist.sort((a, b) => {
+            return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        });
+        return {
+            ...state,
+            watchlist: sorted
+        }
+    }else if(action.type === 'SORT_ASCENDING'){
+        return {
+            ...state
+        }
+    }else if(action.type === 'SORT_DESCENDING'){
+        return {
+            ...state
         }
     }else if(action.type === 'NO_INPUT'){
         return {
@@ -25,12 +47,6 @@ export const reducer = (state, action) => {
         return {
             ...state, 
             isModalOpen: false
-        }
-    }else if(action.type === 'ADD_EPISODES'){
-        const updatedEpisodes = state.episodelist.concat(action.payload);
-        return {
-            ...state,
-            episodelist: updatedEpisodes
         }
     }else{
         throw new Error('no matching action type');
