@@ -7,12 +7,6 @@ export const reducer = (state, action) => {
             isModalOpen: true,
             modalContent: 'show added'
         }
-    }else if(action.type === 'ADD_EPISODES'){
-        const updatedEpisodes = state.episodelist.concat(action.payload);
-        return {
-            ...state,
-            episodelist: updatedEpisodes
-        }
     }else if(action.type === 'REMOVE_PROGRAM'){
         const updatedWatchlist = state.watchlist.filter((program) => program.id !== action.payload);
         return {
@@ -30,12 +24,20 @@ export const reducer = (state, action) => {
             watchlist: sorted
         }
     }else if(action.type === 'SORT_ASCENDING'){
+        const sorted = state.watchlist.sort((a, b) => {
+            return a.unseenEpisodes - b.unseenEpisodes;
+        });
         return {
-            ...state
+            ...state,
+            watchlist: sorted
         }
     }else if(action.type === 'SORT_DESCENDING'){
+        const sorted = state.watchlist.sort((a, b) => {
+            return b.unseenEpisodes - a.unseenEpisodes;
+        });
         return {
-            ...state
+            ...state,
+            watchlist: sorted
         }
     }else if(action.type === 'NO_INPUT'){
         return {

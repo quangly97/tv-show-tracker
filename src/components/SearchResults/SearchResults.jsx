@@ -14,12 +14,11 @@ const SearchResults = () => {
                 const {airdate, airstamp, id, image, name, number, season, summary} = episode;
                 return {
                     airdate, airstamp, id, image, name, number, season, summary, 
-                    watched: false
+                    watched: false,
                 }
             })
-            const updatedProgram = {id, image, name, premiered, summary, episodes};
+            const updatedProgram = {id, image, name, premiered, summary, episodes, unseenEpisodes: episodeList.length};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
-            dispatch({ type: 'ADD_EPISODES', payload: episodes });
         }
     }
 
