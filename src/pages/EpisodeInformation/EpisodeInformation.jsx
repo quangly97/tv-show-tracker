@@ -27,7 +27,6 @@ const EpisodeInformation = () => {
 
     return (
       <div>
-        {console.log(currentEpisode)}
         <h4>{name}</h4>
         <h4>{season}</h4>
         <h4>{number}</h4>

@@ -5,8 +5,8 @@ import { useGlobalContext } from '../../context'
 
 const ProgramInformation = () => {
     const { id } = useParams();
-    const { state: {watchlist} } = useGlobalContext();
-    const currentProgram = watchlist.find((program) => program.id === parseInt(id));
+    const { state } = useGlobalContext();
+    const currentProgram = state.watchlist.find((program) => program.id === Number(id));
     var currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
     const [trigger, setTrigger] = useState(false);
 
@@ -17,6 +17,11 @@ const ProgramInformation = () => {
 
     const toggleWatched = (episode, index) => {
       episode.watched = !episode.watched;
+      if(episode.watched){
+        currentProgram.unseenEpisodes--;
+      }else{
+        currentProgram.unseenEpisodes++;
+      }
       if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === true){
         togglePrevious(index);
       }
@@ -26,7 +31,12 @@ const ProgramInformation = () => {
     const togglePrevious = (index) => {
       const episodelist = currentProgram.episodes;
       for(var i = 0; i < index; i++){
-        episodelist[i].watched = true;
+        if(episodelist[i].watched){
+          continue;
+        }else{
+          episodelist[i].watched = true;
+          currentProgram.unseenEpisodes--;
+        }
       }
     }
 
