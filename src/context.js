@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useReducer } from "react";
+import React, { useState, useEffect, useContext, createContext, useReducer } from "react";
 import axios from "axios";
 import { reducer } from './reducer'
 
@@ -14,6 +14,11 @@ const AppProvider = ({ children }) => {
     modalContent: '',
   }
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  useEffect(() => {
+    const list = JSON.parse(localStorage.getItem('watchlist'));
+    dispatch({ type: 'INTIALIZE_PROGRAMS', payload: list });
+  },[]);
 
   const getPrograms = async (title) => {
     if (title) {

@@ -1,6 +1,7 @@
 export const reducer = (state, action) => {
     if(action.type === 'ADD_PROGRAM'){
         const updatedWatchlist = [...state.watchlist, action.payload];
+        localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist));
         return {
             ...state,
             watchlist: updatedWatchlist,
@@ -9,11 +10,18 @@ export const reducer = (state, action) => {
         }
     }else if(action.type === 'REMOVE_PROGRAM'){
         const updatedWatchlist = state.watchlist.filter((program) => program.id !== action.payload);
+        localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
         return {
             ...state,
             watchlist: updatedWatchlist,
             isModalOpen: true,
             modalContent: 'removed show'
+        }
+    }else if(action.type === 'INTIALIZE_PROGRAMS'){
+        const localstorage = state.watchlist.concat(action.payload);
+        return {
+            ...state,
+            watchlist: localstorage
         }
     }else if(action.type === 'SORT_ALPHABETICAL'){
         const sorted = state.watchlist.sort((a, b) => {
