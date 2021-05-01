@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getMonth } from './getMonth'
+import { getMonth } from '../../helper'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../../context'
+import { Link } from 'react-router-dom'
+import { getName } from '../../helper'
 
 const ProgramInformation = () => {
     const { id } = useParams();
@@ -49,7 +51,7 @@ const ProgramInformation = () => {
                     return (
                       <section key={id}>
                         <span>
-                          <h4>{`${name} - S${season} | E${number}`}</h4>
+                          <Link to={`/${getName(currentProgram.name)}/${id}`}><h4>{`${name} - S${season} | E${number}`}</h4></Link>
                           <h5>{`${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)}`}</h5>
                           {image && <img alt={name} src={image.medium} />}
                           <button className="btn" onClick={() => toggleWatched(episode, index)}>{`${watched}`}</button>

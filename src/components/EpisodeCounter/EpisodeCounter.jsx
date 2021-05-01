@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getName } from '../../helper'
 
 const EpisodeCounter = ({ program }) => {
 
@@ -13,15 +14,12 @@ const EpisodeCounter = ({ program }) => {
     const handleClick = (id) => {
         const current = program.episodes.find((episode) => episode.id === id);
         current.watched = true;
-        program.unseenEpisodes -= 1;
+        program.unseenEpisodes--;
         const watched = {...currentEpisode, watched: true}
         setCurrentEpisode(watched);
     }
 
-    const getName = (name) => {
-        const newName = name.replace(/\s/g, "-").toLowerCase();
-        return newName;
-    };
+    
 
     return (
         <div>

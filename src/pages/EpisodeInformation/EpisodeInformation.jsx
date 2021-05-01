@@ -19,7 +19,6 @@ const EpisodeInformation = () => {
       return {};
     };
 
-    
     const { id } = useParams();
     const { state: { watchlist } } = useGlobalContext();
     const currentEpisode = findEpisode();
