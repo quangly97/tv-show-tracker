@@ -19,8 +19,6 @@ const EpisodeCounter = ({ program }) => {
         setCurrentEpisode(watched);
     }
 
-    
-
     return (
         <div>
             {
