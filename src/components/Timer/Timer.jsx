@@ -10,7 +10,7 @@ const Timer = ({airstamp}) => {
      const [years, setYears] = useState(0);
 
     useEffect(() => {
-        let timer = setTimeout(() => {
+        let timer = setInterval(() => {
             const today = new Date();
             const airdate = Date.parse(airstamp);
 
@@ -48,7 +48,7 @@ const Timer = ({airstamp}) => {
         }, 1000);
 
         return () => {
-            clearTimeout(timer)
+            clearInterval(timer)
         }
     }, [years, months, days, hours, minutes, seconds]);
 

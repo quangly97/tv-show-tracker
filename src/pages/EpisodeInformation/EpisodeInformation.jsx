@@ -52,21 +52,21 @@ const EpisodeInformation = () => {
 
     const { id } = useParams();
     const { state: { watchlist } } = useGlobalContext();
-    const object = findEpisode();
-    const currentEpisode = findEpisode().currentEpisode;
-    const {name, season, number, airdate, airstamp, image, summary} = currentEpisode;
+    const {currentEpisode: {name, season, number, airdate, airstamp, image, summary}, program, prevEpisode, nextEpisode} = findEpisode();
 
     return (
       <div>
+        <h2>{program}</h2>
         <h4>{name}</h4>
         <h4>{season}</h4>
         <h4>{number}</h4>
         <h4>{airdate}</h4>
         {image && <img alt={name} src={image.medium} />}
         {summary && parse(summary)}
+        <button>Watched</button>
         <Timer airstamp={airstamp}/>
-        {object.prevEpisode > 0 && <Link to={`/${getName(object.program)}/${object.prevEpisode}`}><button>Previous</button></Link>}
-        {object.nextEpisode > 0 && <Link to={`/${getName(object.program)}/${object.nextEpisode}`}><button>Next</button></Link>}
+        {prevEpisode > 0 && <Link to={`/${getName(program)}/${prevEpisode}`}><button>Previous</button></Link>}
+        {nextEpisode > 0 && <Link to={`/${getName(program)}/${nextEpisode}`}><button>Next</button></Link>}
       </div>
     );
 }
