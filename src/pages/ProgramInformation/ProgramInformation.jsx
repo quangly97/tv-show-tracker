@@ -10,12 +10,12 @@ const ProgramInformation = () => {
     const { state } = useGlobalContext();
     const currentProgram = state.watchlist.find((program) => program.id === Number(id));
     var currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
-    const [trigger, setTrigger] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
-      setTrigger(false);
+      setToggle(false);
       currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
-    }, [trigger])
+    }, [toggle])
 
     const toggleWatched = (episode, index) => {
       episode.watched = !episode.watched;
@@ -27,7 +27,7 @@ const ProgramInformation = () => {
       if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === true){
         togglePrevious(index);
       }
-      setTrigger(true);
+      setToggle(true);
     }
 
     const togglePrevious = (index) => {

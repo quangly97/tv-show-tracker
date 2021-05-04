@@ -52,18 +52,22 @@ const EpisodeInformation = () => {
 
     const { id } = useParams();
     const { state: { watchlist } } = useGlobalContext();
-    const { program, programName, currentEpisode, prevEpisode, nextEpisode} = findEpisode();
-    const [watched, setWatched] = useState(false)
+    const { program, currentEpisode, prevEpisode, nextEpisode } = findEpisode();
+    const [toggle, setToggle] = useState(false)
     
-    const handleClick = () => {
-      setWatched(true);
+    const toggleWatched = () => {
+      setToggle(true);
       currentEpisode.watched = !currentEpisode.watched;
-      program.unseenEpisodes--;
+      if (currentEpisode.watched) {
+        program.unseenEpisodes--;
+      } else {
+        program.unseenEpisodes++;
+      }
     }
 
     useEffect(() => {
-      setWatched(false);
-    }, [watched])
+      setToggle(false);
+    }, [toggle])
 
     return (
       <div>
@@ -74,7 +78,7 @@ const EpisodeInformation = () => {
         <h4>{currentEpisode.airdate}</h4>
         {currentEpisode.image && <img alt={currentEpisode.name} src={currentEpisode.image.medium} />}
         {currentEpisode.summary && parse(currentEpisode.summary)}
-        <button className='btn' onClick={handleClick}>{`${currentEpisode.watched}`}</button>
+        <button className='btn' onClick={toggleWatched}>{`${currentEpisode.watched}`}</button>
         <Timer airstamp={currentEpisode.airstamp}/>
         {prevEpisode > 0 && <Link to={`/${getName(program.name)}/${prevEpisode}`}><button className='btn'>Previous</button></Link>}
         {nextEpisode > 0 && <Link to={`/${getName(program.name)}/${nextEpisode}`}><button className='btn'>Next</button></Link>}
