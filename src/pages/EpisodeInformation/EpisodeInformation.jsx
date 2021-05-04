@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useGlobalContext } from '../../context'
 import parse from 'html-react-parser'
@@ -9,8 +9,8 @@ const EpisodeInformation = () => {
 
     const findEpisode = () => {
       for (var i = 0; i < watchlist.length; i++) {
-        const list = watchlist[i].episodes;
-        const program = watchlist[i].name;
+        const program = watchlist[i];
+        const list = program.episodes;
         
         for(var j = 0; j < list.length; j++){
           const episode = list[j]
@@ -52,21 +52,32 @@ const EpisodeInformation = () => {
 
     const { id } = useParams();
     const { state: { watchlist } } = useGlobalContext();
-    const {currentEpisode: {name, season, number, airdate, airstamp, image, summary}, program, prevEpisode, nextEpisode} = findEpisode();
+    const { program, programName, currentEpisode, prevEpisode, nextEpisode} = findEpisode();
+    const [watched, setWatched] = useState(false)
+    
+    const handleClick = () => {
+      setWatched(true);
+      currentEpisode.watched = !currentEpisode.watched;
+      program.unseenEpisodes--;
+    }
+
+    useEffect(() => {
+      setWatched(false);
+    }, [watched])
 
     return (
       <div>
-        <h2>{program}</h2>
-        <h4>{name}</h4>
-        <h4>{season}</h4>
-        <h4>{number}</h4>
-        <h4>{airdate}</h4>
-        {image && <img alt={name} src={image.medium} />}
-        {summary && parse(summary)}
-        <button>Watched</button>
-        <Timer airstamp={airstamp}/>
-        {prevEpisode > 0 && <Link to={`/${getName(program)}/${prevEpisode}`}><button>Previous</button></Link>}
-        {nextEpisode > 0 && <Link to={`/${getName(program)}/${nextEpisode}`}><button>Next</button></Link>}
+        <h2>{program.name}</h2>
+        <h4>{currentEpisode.name}</h4>
+        <h4>{currentEpisode.season}</h4>
+        <h4>{currentEpisode.number}</h4>
+        <h4>{currentEpisode.airdate}</h4>
+        {currentEpisode.image && <img alt={currentEpisode.name} src={currentEpisode.image.medium} />}
+        {currentEpisode.summary && parse(currentEpisode.summary)}
+        <button className='btn' onClick={handleClick}>{`${currentEpisode.watched}`}</button>
+        <Timer airstamp={currentEpisode.airstamp}/>
+        {prevEpisode > 0 && <Link to={`/${getName(program.name)}/${prevEpisode}`}><button className='btn'>Previous</button></Link>}
+        {nextEpisode > 0 && <Link to={`/${getName(program.name)}/${nextEpisode}`}><button className='btn'>Next</button></Link>}
       </div>
     );
 }
