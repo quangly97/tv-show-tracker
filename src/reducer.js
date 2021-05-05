@@ -58,6 +58,11 @@ export const reducer = (state, action) => {
             ...state, 
             isModalOpen: false
         }
+    }else if(action.type === 'SET_PAGE'){
+        return {
+            ...state,
+            previousPage: action.payload
+        }
     }else{
         throw new Error('no matching action type');
     }

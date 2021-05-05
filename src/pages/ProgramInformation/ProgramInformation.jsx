@@ -7,10 +7,14 @@ import { getName } from '../../helper'
 
 const ProgramInformation = () => {
     const { id } = useParams();
-    const { state } = useGlobalContext();
+    const { state, dispatch } = useGlobalContext();
     const currentProgram = state.watchlist.find((program) => program.id === Number(id));
     var currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
     const [toggle, setToggle] = useState(false);
+
+    useEffect(() => {
+      dispatch({ type: "SET_PAGE", payload: "episode" });
+    }, []);
 
     useEffect(() => {
       setToggle(false);

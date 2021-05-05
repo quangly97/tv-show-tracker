@@ -12,6 +12,7 @@ const AppProvider = ({ children }) => {
     watchlist: [],
     isModalOpen: false,
     modalContent: '',
+    previousPage: ''
   }
   const [state, dispatch] = useReducer(reducer, defaultState);
 

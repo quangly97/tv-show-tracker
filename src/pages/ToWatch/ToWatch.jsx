@@ -12,6 +12,10 @@ const ToWatch = () => {
     }
 
     useEffect(() => {
+      dispatch({ type: "SET_PAGE", payload: "towatch" });
+    }, []);
+
+    useEffect(() => {
         if(sort === 'Number of episodes descending'){
             dispatch({ type: 'SORT_DESCENDING' });
         }else if(sort === 'Number of episodes ascending'){

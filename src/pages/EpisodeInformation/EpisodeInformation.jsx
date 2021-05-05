@@ -51,7 +51,7 @@ const EpisodeInformation = () => {
     };
 
     const { id } = useParams();
-    const { state: { watchlist } } = useGlobalContext();
+    const { state: { watchlist, previousPage } } = useGlobalContext();
     const { program, currentEpisode, prevEpisode, nextEpisode } = findEpisode();
     const [toggle, setToggle] = useState(false)
     
@@ -71,7 +71,11 @@ const EpisodeInformation = () => {
 
     return (
       <div>
-        <Link to={`/programinformation/${program.id}`}><button className='btn'>{`< Episodes`}</button></Link>
+        <div>
+          {
+            previousPage === 'episode' ? <Link to={`/programinformation/${program.id}`}><button className='btn'>{`< Episodes`}</button></Link> : <Link to={'/towatch'}><button className='btn'>{`< To Watch`}</button></Link>
+          }
+        </div>
         <h2>{program.name}</h2>
         <h4>{currentEpisode.name}</h4>
         <h4>{currentEpisode.season}</h4>

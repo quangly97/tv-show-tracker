@@ -41,9 +41,7 @@ const SearchResults = () => {
               Close
             </button>
             {programs.map((program) => {
-              const {
-                show: { id, name, summary, premiered, image },
-              } = program;
+              const { show: { id, name, summary, premiered, image } } = program;
               return (
                 <section className="product" key={id}>
                   {image && <img alt={name} src={image.original} />}
