@@ -71,6 +71,7 @@ const EpisodeInformation = () => {
 
     return (
       <div>
+        <Link to={`/programinformation/${program.id}`}><button className='btn'>{`< Episodes`}</button></Link>
         <h2>{program.name}</h2>
         <h4>{currentEpisode.name}</h4>
         <h4>{currentEpisode.season}</h4>
