@@ -1,28 +1,29 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useGlobalContext } from '../../context';
 
 const SearchBar = () => {
     const [title, setTitle] = useState('');
-    const inputRef = useRef(null);
+    const inputRef = useRef('');
     const { getPrograms } = useGlobalContext();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        getPrograms(title);
-        setTitle('')
+    const handleChange = () => {
+        setTitle(inputRef.current.value);
     }
+
+    useEffect(() => {
+        getPrograms(title);
+    }, [title])
 
     return (
         <article>
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form">
                 <label htmlFor={inputRef}>Show: </label>
                 <input 
                     type="text"
                     value={title}
                     ref={inputRef}
-                    onChange={(e) => {setTitle(e.target.value)}}
+                    onChange={handleChange}
                 />
-                <button type="submit" id='btn'>Submit</button>
             </form>
         </article>
     )

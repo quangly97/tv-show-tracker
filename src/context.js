@@ -26,7 +26,7 @@ const AppProvider = ({ children }) => {
       const response = await axios.get(`${url}search/shows?q=${title}`);
       setPrograms(response.data);
     }else{
-      dispatch({ type: 'NO_INPUT' })
+      setPrograms([]);
     }
   };
 

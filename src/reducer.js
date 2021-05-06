@@ -47,12 +47,6 @@ export const reducer = (state, action) => {
             ...state,
             watchlist: sorted
         }
-    }else if(action.type === 'NO_INPUT'){
-        return {
-            ...state,
-            isModalOpen: true,
-            modalContent: 'please enter a show'
-        }
     }else if(action.type === 'CLOSE_MODAL'){
         return {
             ...state, 

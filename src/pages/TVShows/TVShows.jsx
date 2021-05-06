@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../context'
 
 const TVShows = () => {
 
-    const { state, dispatch } = useGlobalContext();
+    const { state: { isModalOpen, modalContent }, dispatch } = useGlobalContext();
 
     const closeModal = () => {
         dispatch({ type: 'CLOSE_MODAL' })
@@ -13,7 +13,7 @@ const TVShows = () => {
     return (
         <div>
             {
-                state.isModalOpen && <Modal closeModal={closeModal} modalContent={state.modalContent} />
+                isModalOpen && <Modal closeModal={closeModal} modalContent={modalContent} />
             }
             <SearchBar/>
             <SearchResults/>
