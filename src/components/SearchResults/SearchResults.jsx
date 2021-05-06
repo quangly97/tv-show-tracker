@@ -28,18 +28,11 @@ const SearchResults = () => {
         }
         return false;
     }
-
-    const closeSearch = () => {
-        setPrograms([]);
-    }
-
+    
     return (
       <>
         {programs.length > 0 && (
           <div>
-            <button onClick={closeSearch} className="btn">
-              Close
-            </button>
             {programs.map((program) => {
               const { show: { id, name, summary, premiered, image } } = program;
               return (
