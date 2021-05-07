@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchResults, WatchList, Modal } from '../../components/'
+import { SearchBar, SearchResults, WatchList, Modal } from '../../components/'
 import { useGlobalContext } from '../../context'
 
 const TVShows = () => {
@@ -15,6 +15,7 @@ const TVShows = () => {
             {
                 isModalOpen && <Modal closeModal={closeModal} modalContent={modalContent} />
             }
+            <SearchBar/>
             <SearchResults/>
             <WatchList/>
         </div>

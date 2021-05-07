@@ -35,7 +35,7 @@ const ToWatch = () => {
             </select>
             {
                 watchlist.map((program) => {
-                    return <EpisodeCounter key={program.id} program={program} sorted={sorted} setSorted={setSorted} />;
+                    return <EpisodeCounter key={program.id} program={program} setSorted={setSorted} />;
                 })
             }
         </div>
