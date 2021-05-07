@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../context'
 
 const TVShows = () => {
 
-    const { state: { isModalOpen, modalContent }, dispatch, setPrograms } = useGlobalContext();
+    const { state: { isModalOpen, modalContent }, dispatch } = useGlobalContext();
 
     const closeModal = () => {
         dispatch({ type: 'CLOSE_MODAL' })

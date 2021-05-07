@@ -4,7 +4,7 @@ import parse from 'html-react-parser'
 
 const SearchResults = () => {
 
-    const { programs, setPrograms, state, dispatch, getEpisodes } = useGlobalContext();
+    const { programs, state, dispatch, getEpisodes } = useGlobalContext();
 
     const addToList = async (program) => {
         const {show: {id, image, name, premiered, summary}} = program;
@@ -28,7 +28,7 @@ const SearchResults = () => {
         }
         return false;
     }
-    
+
     return (
       <>
         {programs.length > 0 && (

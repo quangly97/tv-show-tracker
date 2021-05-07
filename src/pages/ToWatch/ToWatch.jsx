@@ -6,13 +6,14 @@ const ToWatch = () => {
 
     const { state: { watchlist }, dispatch } = useGlobalContext();
     const [sort, setSort] = useState('Number of episodes descending');
+    const [sorted, setSorted] = useState(false);
 
     const handleChange = (e) => {
         setSort(e.target.value);
     }
 
     useEffect(() => {
-      dispatch({ type: "SET_PAGE", payload: "towatch" });
+        dispatch({ type: "SET_PAGE", payload: "towatch" });
     }, []);
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const ToWatch = () => {
         }else if(sort === 'Alphabetical'){
             dispatch({ type: 'SORT_ALPHABETICAL'});
         }
-    },[sort])
+    },[sort, sorted]);
 
     return (
         <div>
@@ -34,7 +35,7 @@ const ToWatch = () => {
             </select>
             {
                 watchlist.map((program) => {
-                    return <EpisodeCounter key={program.id} program={program}/>;
+                    return <EpisodeCounter key={program.id} program={program} sorted={sorted} setSorted={setSorted} />;
                 })
             }
         </div>

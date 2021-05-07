@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getName } from '../../helper'
 
-const EpisodeCounter = ({ program }) => {
+const EpisodeCounter = ({ program, setSorted }) => {
 
     const [currentEpisode, setCurrentEpisode] = useState({});
 
     useEffect(() => {
         const current = program.episodes.find((episode) => episode.watched === false);
         setCurrentEpisode(current);
+        setSorted(true);
     }, [currentEpisode])
 
     const handleClick = (id) => {
@@ -17,6 +18,7 @@ const EpisodeCounter = ({ program }) => {
         program.unseenEpisodes--;
         const watched = {...currentEpisode, watched: true}
         setCurrentEpisode(watched);
+        setSorted(false);
     }
 
     return (
