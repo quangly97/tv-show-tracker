@@ -7,7 +7,7 @@ const SearchResults = () => {
     const { programs, state, dispatch, getEpisodes } = useGlobalContext();
 
     const addToList = async (program) => {
-        const {show: {id, image, name, premiered, summary}} = program;
+        const {show: {id, image, name, premiered, summary, genres, schedule, network}} = program;
         if(!showInList(id)){
             const episodeList = await getEpisodes(id);
             const episodes = episodeList.map((episode) => {
@@ -17,7 +17,7 @@ const SearchResults = () => {
                     watched: false,
                 }
             })
-            const updatedProgram = {id, image, name, premiered, summary, episodes, unseenEpisodes: episodeList.length};
+            const updatedProgram = {id, image, name, premiered, summary, genres, schedule, network, episodes, unseenEpisodes: episodeList.length};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
         }
     }

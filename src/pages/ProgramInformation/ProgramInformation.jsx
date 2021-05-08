@@ -48,6 +48,7 @@ const ProgramInformation = () => {
 
     return (
         <div>
+            <Link to={`/information/${id}`}><button className='btn'>{`Information >`}</button></Link>
             <h3>{currentProgram.name}</h3>
             {
                 currentProgram.episodes.map((episode, index) => {
