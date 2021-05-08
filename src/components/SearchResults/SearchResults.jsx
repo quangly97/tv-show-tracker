@@ -4,7 +4,7 @@ import parse from 'html-react-parser'
 
 const SearchResults = () => {
 
-    const { programs, state, dispatch, getEpisodes } = useGlobalContext();
+    const { programs, state, dispatch, getEpisodes, getCast } = useGlobalContext();
 
     const addToList = async (program) => {
         const {show: {id, image, name, premiered, summary, genres, schedule, network}} = program;
@@ -17,7 +17,17 @@ const SearchResults = () => {
                     watched: false,
                 }
             })
-            const updatedProgram = {id, image, name, premiered, summary, genres, schedule, network, episodes, unseenEpisodes: episodeList.length};
+            const castList = await getCast(id);
+            const cast = castList.map((actor) => {
+              const { person, character } = actor;
+              return {
+                id: character.id,
+                actorName: person.name,
+                characterName: character.name,
+                characterImage: character.image
+              }
+            })
+            const updatedProgram = {id, image, name, premiered, summary, genres, schedule, network, episodes, cast, unseenEpisodes: episodeList.length};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
         }
     }
