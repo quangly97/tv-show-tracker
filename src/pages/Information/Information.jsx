@@ -14,6 +14,21 @@ const Information = () => {
 
     const { name, image, summary, premiered, genres, schedule, network } = findProgram(id);
 
+    const get12hrTime = (time) => {
+        let hr = Number(time.substring(0,2));
+        let min = time.substring(3,5);
+
+        if(hr === 0){
+            return `12:${min} AM`
+        }if(hr === 12){
+            return `12:${min} PM`
+        }if(hr > 12){
+            return `${hr - 12}:${min} PM`;
+        }else{
+            return `${time} AM`;
+        }
+    }
+
     return (
         <div>
             <Link to={`/programinformation/${id}`}><button className='btn'>{`< Episodes`}</button></Link>
@@ -25,6 +40,7 @@ const Information = () => {
                 return <p key={index}>{`${genre},`}</p>;
             })}
             <h4>{schedule.days[0]}</h4>
+            <h4>{get12hrTime(schedule.time)}</h4>
             <h4>{network.name}</h4>
             <h4>{premiered.substring(0,4)}</h4>
             <h3>OVERVIEW</h3>
