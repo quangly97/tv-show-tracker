@@ -35,7 +35,7 @@ const Information = () => {
             <Link to={`/cast/${id}`}><button className='btn'>{`Cast >`}</button></Link>
             <h1>Information</h1>
             <h2>{name}</h2>
-            <img src={image && image.medium}/>
+            <img src={image && image.medium} alt={name}/>
             {genres.map((genre, index) => {
                 return <p key={index}>{`${genre},`}</p>;
             })}

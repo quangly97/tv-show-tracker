@@ -25,7 +25,7 @@ const Cast = () => {
                         <section key={id}>
                             <h4>{actorName}</h4>
                             <h4>{characterName}</h4>
-                            <img src={characterImage && characterImage.medium}/>
+                            <img src={characterImage && characterImage.medium} alt={characterName}/>
                         </section>
                     )
                 })
