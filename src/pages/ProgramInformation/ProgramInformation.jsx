@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { getMonth } from '../../helper'
-import { useParams } from 'react-router-dom'
+import { getMonth, getName } from '../../helper'
+import { useParams, Link } from 'react-router-dom'
 import { useGlobalContext } from '../../context'
-import { Link } from 'react-router-dom'
-import { getName } from '../../helper'
 
 const ProgramInformation = () => {
     const { id } = useParams();
