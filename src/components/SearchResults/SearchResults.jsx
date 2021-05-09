@@ -7,7 +7,7 @@ const SearchResults = () => {
     const { programs, state, dispatch, getEpisodes, getCast } = useGlobalContext();
 
     const addToList = async (program) => {
-        const {show: {id, image, name, premiered, summary, genres, schedule, network}} = program;
+        const {show: {id, image, name, premiered, summary, genres, status, schedule, network}} = program;
         if(!showInList(id)){
             const episodeList = await getEpisodes(id);
             const episodes = episodeList.map((episode) => {
@@ -27,7 +27,8 @@ const SearchResults = () => {
                 characterImage: character.image
               }
             })
-            const updatedProgram = {id, image, name, premiered, summary, genres, schedule, network, episodes, cast, unseenEpisodes: episodeList.length};
+
+            const updatedProgram = {id, image, name, premiered, summary, genres, schedule, status, network, episodes, cast, unseenEpisodes: episodeList.length};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
         }
     }

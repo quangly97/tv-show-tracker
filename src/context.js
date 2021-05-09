@@ -10,6 +10,8 @@ const AppProvider = ({ children }) => {
 
   const defaultState = {
     watchlist: [],
+    endedWatchlist: [],
+    runningWatchlist: [],
     isModalOpen: false,
     modalContent: '',
     previousPage: ''
@@ -17,8 +19,10 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   useEffect(() => {
-    const list = JSON.parse(localStorage.getItem('watchlist'));
-    dispatch({ type: 'INTIALIZE_PROGRAMS', payload: list });
+    const watchlist = JSON.parse(localStorage.getItem('watchlist'));
+    const endedWatchlist = JSON.parse(localStorage.getItem("endedWatchlist"));
+    const runningWatchlist = JSON.parse(localStorage.getItem("runningWatchlist"));
+    dispatch({ type: 'INTIALIZE_PROGRAMS', payload: [watchlist, endedWatchlist, runningWatchlist] });
   },[]);
 
   const getPrograms = async (title) => {
