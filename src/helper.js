@@ -31,3 +31,6 @@ export const getName = (name) => {
   return newName;
 };
 
+export const calculateMillisecondsToDays = (ms) => {
+  return ms / 86400000;
+};
