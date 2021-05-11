@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../../context'
 import { Link } from "react-router-dom";
-import { getMonth } from "../../helper";
+import { getMonth, calculateMillisecondsToDays } from "../../helper";
 
 const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
@@ -16,11 +16,13 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
         }else if(status === 'To Be Announced'){
             return <h4>TO BE ANNOUNCED</h4>
         }else if(status === 'Upcoming'){
-            const { season, number, name, airdate } = nextEpisode;
+            const { season, number, name, airdate, airstamp } = nextEpisode;
+            const nextAirDate = Math.ceil(calculateMillisecondsToDays(Date.parse(airstamp) - new Date()));
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
                     <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0, 4)} | ${network && network.name}`}</h4>
+                    <h4>{nextAirDate === 1 ? 'Tomorrow': `${nextAirDate} DAYS` }</h4>
                 </div>
             )
         }
