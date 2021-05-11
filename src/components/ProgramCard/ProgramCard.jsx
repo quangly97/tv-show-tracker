@@ -16,7 +16,6 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
         }else if(status === 'To Be Announced'){
             return <h4>TO BE ANNOUNCED</h4>
         }else if(status === 'Upcoming'){
-            console.log(nextEpisode);
             const { season, number, name, airdate } = nextEpisode;
             return (
                 <div>
