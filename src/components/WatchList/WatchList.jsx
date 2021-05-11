@@ -23,7 +23,7 @@ const WatchList = () => {
 
     const findNextEpisode = (program) => {
         const today = new Date();
-        return program.episodes.find((episode) => today - Date.parse(episode.airdate) < 0);
+        return program.episodes.find((episode) => today - Date.parse(episode.airstamp) < 0);
     }
 
     const upcomingWatchlist = runningWatchlist.filter((program) => findLatestEpisode(program).id !== program.episodes[program.episodes.length - 1].id).map((program) => {
