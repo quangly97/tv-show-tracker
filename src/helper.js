@@ -34,3 +34,38 @@ export const getName = (name) => {
 export const calculateMillisecondsToDays = (ms) => {
   return ms / 86400000;
 };
+
+export const get12hrTime = (time) => {
+  let hr = Number(time.substring(0, 2));
+  let min = time.substring(3, 5);
+
+  if (hr === 0) {
+    return `12:${min} AM`;
+  }
+  if (hr === 12) {
+    return `12:${min} PM`;
+  }
+  if (hr > 12) {
+    return `${hr - 12}:${min} PM`;
+  } else {
+    return `${time} AM`;
+  }
+};
+
+export const getDay = (day) => {
+  if(day === 'Sunday'){
+    return 0;
+  }else if(day === 'Monday'){
+    return 1;
+  }else if(day === 'Tuesday'){
+    return 2;
+  }else if(day === 'Wednesday'){
+    return 3;
+  }else if(day === 'Thursday'){
+    return 4;
+  }else if(day === 'Friday'){
+    return 5;
+  }else{
+    return 6;
+  }
+}
