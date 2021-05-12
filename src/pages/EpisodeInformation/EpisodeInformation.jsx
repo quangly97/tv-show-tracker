@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
-import { useGlobalContext } from '../../context'
-import parse from 'html-react-parser'
-import { Timer } from '../../components'
-import { getName } from '../../helper'
+import { useGlobalContext } from '../../context';
+import parse from 'html-react-parser';
+import { Timer } from '../../components';
+import { getName } from '../../helper';
 
 const EpisodeInformation = () => {
 
@@ -29,31 +29,31 @@ const EpisodeInformation = () => {
                 prevEpisode: -1,
                 currentEpisode,
                 nextEpisode: list[j + 1].id,
-              };
+              }
             }else if(j === list.length - 1){
               return {
                 program,
                 prevEpisode: list[j - 1].id,
                 currentEpisode,
                 nextEpisode: -1,
-              };
+              }
             }else{
               return {
                 program,
                 prevEpisode: list[j - 1].id,
                 currentEpisode,
                 nextEpisode: list[j + 1].id,
-              };
+              }
             }
           }
         }
       }
-    };
+    }
 
     const { id } = useParams();
     const { state: { watchlist, previousPage } } = useGlobalContext();
     const { program, currentEpisode, prevEpisode, nextEpisode } = findEpisode();
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(false);
     
     const toggleWatched = () => {
       setToggle(true);
@@ -67,7 +67,7 @@ const EpisodeInformation = () => {
 
     useEffect(() => {
       setToggle(false);
-    }, [toggle])
+    }, [toggle]);
 
     return (
       <div>
@@ -91,4 +91,4 @@ const EpisodeInformation = () => {
     );
 }
 
-export default EpisodeInformation
+export default EpisodeInformation;

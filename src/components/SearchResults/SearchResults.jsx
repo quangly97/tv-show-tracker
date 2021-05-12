@@ -1,6 +1,6 @@
-import React from 'react'
-import { useGlobalContext } from '../../context'
-import parse from 'html-react-parser'
+import React from 'react';
+import { useGlobalContext } from '../../context';
+import parse from 'html-react-parser';
 
 const SearchResults = () => {
 
@@ -16,7 +16,7 @@ const SearchResults = () => {
                     airdate, airstamp, id, image, name, number, season, summary, 
                     watched: false,
                 }
-            })
+            });
             const castList = await getCast(id);
             const cast = castList.map((actor) => {
               const { person, character } = actor;
@@ -26,7 +26,7 @@ const SearchResults = () => {
                 characterName: character.name,
                 characterImage: character.image
               }
-            })
+            });
 
             const updatedProgram = {id, image, name, premiered, summary, genres, schedule, status, network, episodes, cast, unseenEpisodes: episodeList.length};
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
@@ -59,7 +59,7 @@ const SearchResults = () => {
           </div>
         )}
       </>
-    );
+    )
 }
 
-export default SearchResults
+export default SearchResults;

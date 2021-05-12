@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { useGlobalContext } from '../../context';
 
 const SearchBar = () => {
@@ -12,7 +12,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         getPrograms(title);
-    }, [title])
+    }, [title]);
 
     return (
         <article>
@@ -29,4 +29,4 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar
+export default SearchBar;

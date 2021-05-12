@@ -24,16 +24,16 @@ export const getMonth = (number) => {
   } else if (number === "12") {
     return "December";
   }
-};
+}
 
 export const getName = (name) => {
   const newName = name.replace(/\s/g, "-").toLowerCase();
   return newName;
-};
+}
 
 export const calculateMillisecondsToDays = (ms) => {
   return ms / 86400000;
-};
+}
 
 export const get12hrTime = (time) => {
   let hr = Number(time.substring(0, 2));
@@ -50,7 +50,7 @@ export const get12hrTime = (time) => {
   } else {
     return `${time} AM`;
   }
-};
+}
 
 export const getDay = (day) => {
   if(day === 'Sunday'){

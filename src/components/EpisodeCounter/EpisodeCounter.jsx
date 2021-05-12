@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { getName } from '../../helper'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getName } from '../../helper';
 
 const EpisodeCounter = ({ program, setSorted }) => {
 
@@ -10,7 +10,7 @@ const EpisodeCounter = ({ program, setSorted }) => {
         const current = program.episodes.find((episode) => episode.watched === false);
         setCurrentEpisode(current);
         setSorted(true);
-    }, [currentEpisode])
+    }, [currentEpisode]);
 
     const handleClick = (id) => {
         const current = program.episodes.find((episode) => episode.id === id);
@@ -38,4 +38,4 @@ const EpisodeCounter = ({ program, setSorted }) => {
     )
 }
 
-export default EpisodeCounter
+export default EpisodeCounter;

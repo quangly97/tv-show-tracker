@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
 const Modal = ({modalContent, closeModal}) => {
 
@@ -15,4 +15,4 @@ const Modal = ({modalContent, closeModal}) => {
     )
 }
 
-export default Modal
+export default Modal;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext, useReducer } from "react";
 import axios from "axios";
-import { reducer } from './reducer'
+import { reducer } from './reducer';
 
 const AppContext = createContext();
 
@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
     isModalOpen: false,
     modalContent: '',
     previousPage: ''
-  }
+  };
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   useEffect(() => {

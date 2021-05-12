@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useGlobalContext } from '../../context'
+import React, { useState, useEffect } from 'react';
+import { useGlobalContext } from '../../context';
 import Chart from "react-google-charts";
 
 const Statistics = () => {
 
     const { state: { watchlist }}= useGlobalContext();
-    const [totals, setTotals] = useState({ seenEpisodes: 0, unseenEpisodes: 0, totalEpisodes: 0 })
+    const [totals, setTotals] = useState({ seenEpisodes: 0, unseenEpisodes: 0, totalEpisodes: 0 });
 
     const calculateTotals = () => {
       var total = 0, unseen = 0, seen = 0;
@@ -26,7 +26,7 @@ const Statistics = () => {
 
     useEffect(() => {
         calculateTotals();
-    }, [])
+    }, []);
 
     return (
       <div>
@@ -51,4 +51,4 @@ const Statistics = () => {
     );
 }
 
-export default Statistics
+export default Statistics;
