@@ -2,6 +2,7 @@ import React from 'react'
 import { useGlobalContext } from '../../context'
 import { Link, useParams } from 'react-router-dom'
 import parse from "html-react-parser";
+import { get12hrTime } from '../../helper';
 
 const Information = () => {
     const { id } = useParams();
@@ -13,21 +14,6 @@ const Information = () => {
     }
 
     const { name, image, summary, premiered, genres, schedule, network } = findProgram(id);
-
-    const get12hrTime = (time) => {
-        let hr = Number(time.substring(0,2));
-        let min = time.substring(3,5);
-
-        if(hr === 0){
-            return `12:${min} AM`
-        }if(hr === 12){
-            return `12:${min} PM`
-        }if(hr > 12){
-            return `${hr - 12}:${min} PM`;
-        }else{
-            return `${time} AM`;
-        }
-    }
 
     return (
         <div>
