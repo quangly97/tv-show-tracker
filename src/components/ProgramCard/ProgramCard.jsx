@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
-import { getMonth, getDay, get12hrTime } from "../../helper";
+import { getMonth, getDay, get12hrTime, getModulus } from "../../helper";
 
 const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
@@ -12,7 +12,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
     
     const getNextAirDate = () => {
         const today = (new Date()).getDay();
-        const diff = (getDay(schedule.days[0]) - today) % 7;
+        const diff = getModulus(getDay(schedule.days[0]) - today);
 
         if(diff === 0){
             return <h4>{get12hrTime(schedule.time)}</h4>

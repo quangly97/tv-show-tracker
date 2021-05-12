@@ -69,3 +69,7 @@ export const getDay = (day) => {
     return 6;
   }
 }
+
+export const getModulus = (number) => {
+  return ((number % 7) + 7) % 7;
+};
