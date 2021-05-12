@@ -1,5 +1,5 @@
-import React from 'react'
-import { useGlobalContext } from '../../context'
+import React from 'react';
+import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
 import { getMonth, getDay, get12hrTime } from "../../helper";
 
@@ -8,7 +8,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
 
     const removeProgram = (id) => {
         dispatch({ type: 'REMOVE_PROGRAM', payload: id })
-    };
+    }
     
     const getNextAirDate = () => {
         const today = (new Date()).getDay();
@@ -29,7 +29,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
         }else if(status === 'To Be Announced'){
             return <h4>TO BE ANNOUNCED</h4>
         }else if(status === 'Upcoming'){
-            const { season, number, name, airdate, airstamp } = nextEpisode;
+            const { season, number, name, airdate } = nextEpisode;
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
@@ -50,4 +50,4 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
     )
 }
 
-export default ProgramCard
+export default ProgramCard;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useGlobalContext } from "../../context";
-import { ProgramCard } from '../'
+import { ProgramCard } from '../';
 
 const WatchList = () => {
 
@@ -45,7 +45,7 @@ const WatchList = () => {
                     const { id } = program;
                     return (
                         <ProgramCard key={id} {...program} nextEpisode={findNextEpisode(program)}/>
-                    );
+                    )
                 }))
             }
             <h2 onClick={() => setShowTBA(!showTBA)}>TO BE ANNOUNCED</h2>
@@ -54,7 +54,7 @@ const WatchList = () => {
                     const { id } = program
                     return (
                         <ProgramCard key={id} {...program}/>
-                    );
+                    )
                 }))
             }
             <h2 onClick={() => setShowEnded(!showEnded)}>ENDED</h2>
@@ -63,11 +63,11 @@ const WatchList = () => {
                     const { id } = program
                     return (
                         <ProgramCard key={id} {...program}/>
-                    );
+                    )
                 }))
             }
         </div>
     )
 }
 
-export default WatchList
+export default WatchList;

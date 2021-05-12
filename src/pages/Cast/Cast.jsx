@@ -1,6 +1,6 @@
-import React from 'react'
-import { useGlobalContext } from '../../context'
-import { useParams, Link } from 'react-router-dom'
+import React from 'react';
+import { useGlobalContext } from '../../context';
+import { useParams, Link } from 'react-router-dom';
 
 const Cast = () => {
 
@@ -34,4 +34,4 @@ const Cast = () => {
     )
 }
 
-export default Cast
+export default Cast;

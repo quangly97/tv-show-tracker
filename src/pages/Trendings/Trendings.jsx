@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Trendings = () => {
     return (
@@ -8,4 +8,4 @@ const Trendings = () => {
     )
 }
 
-export default Trendings
+export default Trendings;

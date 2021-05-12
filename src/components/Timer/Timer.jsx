@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Timer = ({airstamp}) => {
 
@@ -48,7 +48,7 @@ const Timer = ({airstamp}) => {
         }, 1000);
 
         return () => {
-            clearInterval(timer)
+            clearInterval(timer);
         }
     }, [years, months, days, hours, minutes, seconds]);
 
@@ -71,4 +71,4 @@ const Timer = ({airstamp}) => {
     );
 }
 
-export default Timer
+export default Timer;

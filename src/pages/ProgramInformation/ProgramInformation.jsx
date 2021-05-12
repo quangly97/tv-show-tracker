@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { getMonth, getName } from '../../helper'
-import { useParams, Link } from 'react-router-dom'
-import { useGlobalContext } from '../../context'
+import React, { useState, useEffect } from 'react';
+import { getMonth, getName } from '../../helper';
+import { useParams, Link } from 'react-router-dom';
+import { useGlobalContext } from '../../context';
 
 const ProgramInformation = () => {
     const { id } = useParams();
@@ -17,7 +17,7 @@ const ProgramInformation = () => {
     useEffect(() => {
       setToggle(false);
       currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
-    }, [toggle])
+    }, [toggle]);
 
     const toggleWatched = (episode, index) => {
       episode.watched = !episode.watched;
@@ -67,4 +67,4 @@ const ProgramInformation = () => {
     )
 }
 
-export default ProgramInformation
+export default ProgramInformation;

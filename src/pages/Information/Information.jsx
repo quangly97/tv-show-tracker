@@ -1,6 +1,6 @@
-import React from 'react'
-import { useGlobalContext } from '../../context'
-import { Link, useParams } from 'react-router-dom'
+import React from 'react';
+import { useGlobalContext } from '../../context';
+import { Link, useParams } from 'react-router-dom';
 import parse from "html-react-parser";
 import { get12hrTime } from '../../helper';
 

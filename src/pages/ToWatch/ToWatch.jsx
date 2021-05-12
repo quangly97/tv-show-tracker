@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { EpisodeCounter } from '../../components/'
-import { useGlobalContext } from '../../context'
+import React, { useState, useEffect } from 'react';
+import { EpisodeCounter } from '../../components/';
+import { useGlobalContext } from '../../context';
 
 const ToWatch = () => {
 
@@ -42,4 +42,4 @@ const ToWatch = () => {
     )
 }
 
-export default ToWatch
+export default ToWatch;
