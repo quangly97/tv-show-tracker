@@ -7,3 +7,4 @@ export { default as ProgramInformation } from './ProgramInformation/ProgramInfor
 export { default as EpisodeInformation } from './EpisodeInformation/EpisodeInformation';
 export { default as Information } from './Information/Information';
 export { default as Cast } from './Cast/Cast';
+export { default as Search } from './Search/Search';

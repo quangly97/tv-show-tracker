@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from './components/'
-import { Statistics, ToWatch, Trendings, TVShows, ProgramInformation, EpisodeInformation, Information, Cast, Error } from './pages/';
+import { Statistics, ToWatch, Trendings, TVShows, ProgramInformation, EpisodeInformation, Information, Cast, Error, Search } from './pages/';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -11,6 +11,9 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <TVShows/>
+        </Route>
+        <Route path='/search'>
+          <Search/>
         </Route>
         <Route path='/towatch'>
           <ToWatch/>
