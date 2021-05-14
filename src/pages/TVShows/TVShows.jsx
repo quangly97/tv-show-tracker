@@ -27,13 +27,13 @@ const TVShows = () => {
         return program.episodes.find((episode) => today - Date.parse(episode.airstamp) < 0);
     }
 
-    const upcomingWatchlist = runningWatchlist.filter((program) => findLatestEpisode(program).id !== program.episodes[program.episodes.length - 1].id).map((program) => {
+    const upcomingWatchlist = runningWatchlist.filter((program) => (findLatestEpisode(program).id !== program.episodes[program.episodes.length - 1].id && findNextEpisode(program) !== undefined)).map((program) => {
         program.status = 'Upcoming';
         return program;
     });
 
 
-    const tbaWatchlist = runningWatchlist.filter((program) => findLatestEpisode(program).id === program.episodes[program.episodes.length - 1].id).map((program) => {
+    const tbaWatchlist = runningWatchlist.filter((program) => (findLatestEpisode(program).id === program.episodes[program.episodes.length - 1].id || findNextEpisode(program) === undefined)).map((program) => {
         program.status = 'To Be Announced';
         return program;
     });
