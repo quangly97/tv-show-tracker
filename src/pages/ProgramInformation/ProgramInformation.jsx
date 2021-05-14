@@ -46,6 +46,7 @@ const ProgramInformation = () => {
 
     return (
         <div>
+            <Link to={`/`}><button className='btn'>{`< Home`}</button></Link>
             <Link to={`/information/${id}`}><button className='btn'>{`Information >`}</button></Link>
             <h3>{currentProgram.name}</h3>
             {
