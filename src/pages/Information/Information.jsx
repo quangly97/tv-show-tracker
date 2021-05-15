@@ -13,7 +13,7 @@ const Information = () => {
         return currentProgram;
     }
 
-    const { name, image, summary, premiered, genres, schedule, network } = findProgram(id);
+    const { name, image, summary, premiered, genres, schedule, network, webChannel } = findProgram(id);
 
     return (
         <div>
@@ -27,7 +27,7 @@ const Information = () => {
             })}
             <h4>{schedule.days[0]}</h4>
             <h4>{get12hrTime(schedule.time)}</h4>
-            <h4>{network.name}</h4>
+            <h4>{network !== null ? network.name : webChannel.name}</h4>
             <h4>{premiered.substring(0,4)}</h4>
             <h3>OVERVIEW</h3>
             <h4>{summary && parse(summary)}</h4>

@@ -3,7 +3,7 @@ import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
 import { getMonth, getDay, calculateMillisecondsToDays, get12hrTime, getModulus } from "../../helper";
 
-const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }) => {
+const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
 
     const removeProgram = (id) => {
@@ -35,7 +35,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, nextEpisode }
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
-                    <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0, 4)} | ${network && network.name}`}</h4>
+                    <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
                     {getNextAirDate()}
                 </div>
             )
