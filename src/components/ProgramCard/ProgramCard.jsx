@@ -3,15 +3,28 @@ import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
 import { getMonth, getDay, calculateMillisecondsToDays, get12hrTime, getModulus } from "../../helper";
 
-const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, nextEpisode }) => {
+const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, latestEpisode, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
 
     const removeProgram = (id) => {
         dispatch({ type: 'REMOVE_PROGRAM', payload: id })
     }
+
+    const getLatestAirDate = () => {
+        const today = new Date();
+        const todayDay = today.getDay();
+        const diff = getModulus(todayDay - getDay(schedule.days[0]));
+
+        if(diff === 0){
+            return <h4>{get12hrTime(schedule.time)}</h4>
+        }else if(diff === 1){
+            return <h4>YESTERDAY</h4>
+        }else{
+            return <h4>{`${diff} DAYS`}</h4>
+        }
+    }
     
-    const getNextAirDate = () => {
-        const { airstamp } = nextEpisode; 
+    const getNextAirDate = (airstamp) => {
         const today = new Date();
         const todayDay = today.getDay();
         const diff = calculateMillisecondsToDays(Date.parse(airstamp) - today) < 7 ? getModulus(getDay(schedule.days[0]) - todayDay) : getModulus(getDay(schedule.days[0]) - todayDay) + 7;
@@ -31,12 +44,21 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, n
         }else if(status === 'To Be Announced'){
             return <h4>TO BE ANNOUNCED</h4>
         }else if(status === 'Upcoming'){
-            const { season, number, name, airdate } = nextEpisode;
+            const { season, number, name, airdate, airstamp } = nextEpisode;
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
                     <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
-                    {getNextAirDate()}
+                    {getNextAirDate(airstamp)}
+                </div>
+            )
+        }else if(status === 'Recent'){
+            const { season, number, name, airdate } = latestEpisode;
+            return (
+                <div>
+                    <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
+                    <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
+                    {getLatestAirDate()}
                 </div>
             )
         }

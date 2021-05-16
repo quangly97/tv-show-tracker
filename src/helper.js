@@ -73,3 +73,20 @@ export const getDay = (day) => {
 export const getModulus = (number) => {
   return ((number % 7) + 7) % 7;
 };
+
+export const findLatestEpisode = (program) => {
+  const today = new Date();
+  for (var i = program.episodes.length - 1; i >= 0; i--) {
+    const episode = program.episodes[i];
+    const airdate = Date.parse(episode.airstamp);
+
+    if (today - airdate >= 0) {
+      return episode;
+    }
+  }
+}
+
+export const findNextEpisode = (program) => {
+  const today = new Date();
+  return program.episodes.find((episode) => today - Date.parse(episode.airstamp) < 0);
+}
