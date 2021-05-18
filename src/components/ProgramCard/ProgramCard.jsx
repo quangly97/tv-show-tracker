@@ -10,31 +10,35 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
         dispatch({ type: 'REMOVE_PROGRAM', payload: id })
     }
 
-    const getLatestAirDate = () => {
+    const getLatestAirDate = (airstamp) => {
         const today = new Date();
         const todayDay = today.getDay();
-        const diff = getModulus(todayDay - getDay(schedule.days[0]));
+        const difference = calculateMillisecondsToDays(today - Date.parse(airstamp));
+        const latestAirDay = getModulus(todayDay - getDay(schedule.days[0]));
+        const latest = latestAirDay == 0 && difference > 1 ? 7 : latestAirDay;
 
-        if(diff === 0){
+        if(latest === 0){
             return <h4>{get12hrTime(schedule.time)}</h4>
-        }else if(diff === 1){
+        }else if(latest === 1){
             return <h4>YESTERDAY</h4>
         }else{
-            return <h4>{`${diff} DAYS`}</h4>
+            return <h4>{`${latest} DAYS`}</h4>
         }
     }
     
     const getNextAirDate = (airstamp) => {
         const today = new Date();
         const todayDay = today.getDay();
-        const diff = calculateMillisecondsToDays(Date.parse(airstamp) - today) < 7 ? getModulus(getDay(schedule.days[0]) - todayDay) : getModulus(getDay(schedule.days[0]) - todayDay) + 7;
+        const difference = calculateMillisecondsToDays(Date.parse(airstamp) - today);
+        const nextAirDay = getModulus(getDay(schedule.days[0]) - todayDay);
+        const next = difference > 0 && difference < 7 ? nextAirDay : nextAirDay + 7;
 
-        if(diff === 0){
+        if(next === 0){
             return <h4>{get12hrTime(schedule.time)}</h4>
-        }else if(diff === 1){
+        }else if(next === 1){
             return <h4>TOMORROW</h4>
         }else{
-            return <h4>{`${diff} DAYS`}</h4>
+            return <h4>{`${next} DAYS`}</h4>
         }
     }
 
@@ -53,12 +57,12 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
                 </div>
             )
         }else if(status === 'Recent'){
-            const { season, number, name, airdate } = latestEpisode;
+            const { season, number, name, airdate, airstamp } = latestEpisode;
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
                     <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
-                    {getLatestAirDate()}
+                    {getLatestAirDate(airstamp)}
                 </div>
             )
         }

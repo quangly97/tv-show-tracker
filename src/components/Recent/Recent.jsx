@@ -12,8 +12,6 @@ const Recent = () => {
         return program;
     });
 
-    console.log(recentWatchlist);
-
     return (
         <div>
             {
