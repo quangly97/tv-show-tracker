@@ -7,7 +7,6 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const url = "http://api.tvmaze.com";
   const [programs, setPrograms] = useState([]);
-
   const defaultState = {
     watchlist: [],
     endedWatchlist: [],
@@ -48,6 +47,17 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  const getWatchlistPrograms = async (title) => {
+    var results = [];
+    if(title){
+      results = await state.watchlist.filter((program) => program.name.toLowerCase().includes(title));
+      setPrograms(results);
+    }else{
+      setPrograms([]);
+    }
+    
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -57,7 +67,8 @@ const AppProvider = ({ children }) => {
         dispatch,
         state,
         programs,
-        setPrograms
+        setPrograms,
+        getWatchlistPrograms
       }}
     >
       {children}
