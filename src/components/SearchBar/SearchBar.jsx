@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGlobalContext } from '../../context';
 
-const SearchBar = () => {
+const SearchBar = ({type}) => {
     const [title, setTitle] = useState('');
     const inputRef = useRef('');
-    const { getPrograms } = useGlobalContext();
+    const { getPrograms, getWatchlistPrograms } = useGlobalContext();
 
     const handleChange = () => {
         setTitle(inputRef.current.value);
     }
 
     useEffect(() => {
-        getPrograms(title);
+        if(type === 'searching'){
+            getPrograms(title);
+        }else if(type === 'personal'){
+            getWatchlistPrograms(title);
+        }
     }, [title]);
 
     return (

@@ -37,8 +37,6 @@ export const reducer = (state, action) => {
             watchlist: updatedWatchlist,
             endedWatchlist: updatedEndedWatchlist,
             runningWatchlist: updatedRunningWatchlist,
-            isModalOpen: true,
-            modalContent: 'removed show'
         }
     }else if(action.type === 'INTIALIZE_PROGRAMS'){
         const localWatchlist = state.watchlist.concat(action.payload[0]);

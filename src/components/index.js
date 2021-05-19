@@ -9,3 +9,4 @@ export { default as Recent } from './Recent/Recent'
 export { default as Upcoming } from './Upcoming/Upcoming';
 export { default as TBA } from './TBA/TBA';
 export { default as Ended } from './Ended/Ended';
+export { default as WatchlistSearchResults } from './WatchlistSearchResults/WatchlistSearchResults'

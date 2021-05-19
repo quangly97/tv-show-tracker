@@ -15,7 +15,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
         const todayDay = today.getDay();
         const difference = calculateMillisecondsToDays(today - Date.parse(airstamp));
         const latestAirDay = getModulus(todayDay - getDay(schedule.days[0]));
-        const latest = latestAirDay == 0 && difference > 1 ? 7 : latestAirDay;
+        const latest = latestAirDay === 0 && difference > 1 ? 7 : latestAirDay;
 
         if(latest === 0){
             return <h4>{get12hrTime(schedule.time)}</h4>

@@ -5,19 +5,23 @@ import { useGlobalContext } from "../../context";
 
 const Search = () => {
 
-    const { state: { isModalOpen, modalContent }, dispatch } = useGlobalContext();
+    const { state: { isModalOpen, modalContent }, dispatch, getPrograms } = useGlobalContext();
 
     const closeModal = () => {
         dispatch({ type: 'CLOSE_MODAL' });
     }
 
+    const closeSearch = () => {
+        getPrograms();
+    }
+
     return (
         <div>
-            <Link to='/'><button className='btn'>x</button></Link>
+            <Link to='/'><button className='btn' onClick={closeSearch}>x</button></Link>
             {
                 isModalOpen && <Modal closeModal={closeModal} modalContent={modalContent} />
             }
-            <SearchBar/>
+            <SearchBar type='searching'/>
             <SearchResults/>
         </div>
     )
