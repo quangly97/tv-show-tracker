@@ -52,7 +52,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
-                    <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
+                    <h4>{`${schedule.days[0] || 'TBD'} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
                     {getNextAirDate(airstamp)}
                 </div>
             )
@@ -61,7 +61,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
             return (
                 <div>
                     <h4>{`S${season < 10 ? `0${season}` : season}E${number < 10 ? `0${number}` : number} | ${name}`}</h4>
-                    <h4>{`${schedule.days[0]} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
+                    <h4>{`${schedule.days[0] || 'TBD'} | ${getMonth(airdate.substring(5,7))} ${airdate.substring(8,10)} | ${airdate.substring(0,4)} | ${network ? network.name : webChannel.name}`}</h4>
                     {getLatestAirDate(airstamp)}
                 </div>
             )
