@@ -15,7 +15,6 @@ const ProgramInformation = () => {
     }, []);
 
     useEffect(() => {
-      setToggle(false);
       currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
     }, [toggle]);
 
@@ -29,7 +28,7 @@ const ProgramInformation = () => {
       if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === true){
         togglePrevious(index);
       }
-      setToggle(true);
+      setToggle(!toggle);
     }
 
     const togglePrevious = (index) => {

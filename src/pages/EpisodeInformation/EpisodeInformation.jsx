@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useGlobalContext } from '../../context';
 import parse from 'html-react-parser';
@@ -56,7 +56,7 @@ const EpisodeInformation = () => {
     const [toggle, setToggle] = useState(false);
     
     const toggleWatched = () => {
-      setToggle(true);
+      setToggle(!toggle);
       currentEpisode.watched = !currentEpisode.watched;
       if (currentEpisode.watched) {
         program.unseenEpisodes--;
@@ -64,10 +64,6 @@ const EpisodeInformation = () => {
         program.unseenEpisodes++;
       }
     }
-
-    useEffect(() => {
-      setToggle(false);
-    }, [toggle]);
 
     return (
       <div>
