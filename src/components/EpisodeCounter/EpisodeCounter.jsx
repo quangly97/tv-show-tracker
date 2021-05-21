@@ -28,7 +28,7 @@ const EpisodeCounter = ({ program, setSorted }) => {
                     <div>
                         <h2>{program.name}</h2>
                         <h3>{program.unseenEpisodes}</h3>
-                        <Link to={`/${getName(program.name)}/${currentEpisode.id}`}><h4>{currentEpisode.name}</h4></Link>
+                        <Link to={`${program.id}/${getName(program.name)}/${currentEpisode.id}`}><h4>{currentEpisode.name}</h4></Link>
                         <h5>{`S${currentEpisode.season} | E${currentEpisode.number}`}</h5>
                         <button className='btn' onClick={() => handleClick(currentEpisode.id)}>Checkmark</button>
                     </div>
