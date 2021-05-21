@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from './components/'
-import { Statistics, ToWatch, Trendings, TVShows, ProgramInformation, EpisodeInformation, Information, Cast, Error, Search } from './pages/';
+import { Statistics, ToWatch, Trendings, TVShows, EpisodeGuide, EpisodeDetails, ProgramDetails, Cast, Error, Search } from './pages/';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -24,10 +24,10 @@ function App() {
         <Route path='/statistics'>
           <Statistics/>
         </Route>
-        <Route path='/programinformation/:id' children={<ProgramInformation/>}></Route>
-        <Route path='/information/:id' children={<Information/>}></Route>
-        <Route path='/cast/:id' children={<Cast/>}></Route>
-        <Route path='/:name/:id' children={<EpisodeInformation/>}></Route>
+        <Route path='/:id/:name/episodes/' children={<EpisodeGuide/>}></Route>
+        <Route path='/:id/:name/information/' children={<ProgramDetails/>}></Route>
+        <Route path='/:id/:name/cast/' children={<Cast/>}></Route>
+        <Route path='/:id/:name/:episodeID/' children={<EpisodeDetails/>}></Route>
         <Route path='*'>
           <Error/>
         </Route>

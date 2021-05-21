@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
-import { getMonth, getDay, calculateMillisecondsToDays, get12hrTime, getModulus } from "../../helper";
+import { getMonth, getDay, calculateMillisecondsToDays, get12hrTime, getModulus, getName } from "../../helper";
 
 const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, latestEpisode, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
@@ -70,7 +70,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
 
     return (
         <section>
-            <Link to={`/programinformation/${id}`}><h3>{name}</h3></Link>
+            <Link to={`${id}/${getName(name)}/episodes`}><h3>{name}</h3></Link>
             {description()}
             <img src={image && image.medium} alt={name}/>
             <button className='btn' onClick={() => removeProgram(id)}>Remove</button>
