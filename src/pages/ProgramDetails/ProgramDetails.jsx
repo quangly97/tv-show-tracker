@@ -1,18 +1,18 @@
 import React from 'react';
-import { CastResults, Loading } from '../../components';
+import { Information, Loading } from '../../components';
 import { useGlobalContext } from '../../context';
 
-const Cast = () => {
+const ProgramDetails = () => {
 
     const { state: { watchlist } } = useGlobalContext();
 
     return (
         <div>
             {
-                watchlist.length > 0 ? <CastResults watchlist={watchlist} /> : <Loading/>
+                watchlist.length > 0 ? <Information watchlist={watchlist} /> : <Loading/>
             }
         </div>
     )
 }
 
-export default Cast;
+export default ProgramDetails;

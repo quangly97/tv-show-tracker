@@ -1,12 +1,10 @@
 import React from 'react';
-import { useGlobalContext } from '../../context';
 import { Link, useParams } from 'react-router-dom';
 import parse from "html-react-parser";
-import { get12hrTime } from '../../helper';
+import { get12hrTime, getName } from '../../helper';
 
-const Information = () => {
+const Information = ({ watchlist }) => {
     const { id } = useParams();
-    const { state: { watchlist } } = useGlobalContext();
 
     const findProgram = (id) => {
         const currentProgram = watchlist.find((program) => Number(id) === program.id);
@@ -17,8 +15,8 @@ const Information = () => {
 
     return (
         <div>
-            <Link to={`/programinformation/${id}`}><button className='btn'>{`< Episodes`}</button></Link>
-            <Link to={`/cast/${id}`}><button className='btn'>{`Cast >`}</button></Link>
+            <Link to={`/${id}/${getName(name)}/episodes`}><button className='btn'>{`< Episodes`}</button></Link>
+            <Link to={`/${id}/${getName(name)}/cast`}><button className='btn'>{`Cast >`}</button></Link>
             <h1>Information</h1>
             <h2>{name}</h2>
             <img src={image && image.medium} alt={name}/>
@@ -35,4 +33,4 @@ const Information = () => {
     );
 }
 
-export default Information
+export default Information;
