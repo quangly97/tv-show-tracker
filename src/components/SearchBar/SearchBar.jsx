@@ -27,6 +27,7 @@ const SearchBar = ({type}) => {
                     value={title}
                     ref={inputRef}
                     onChange={handleChange}
+                    placeholder={type === 'searching' ? 'Add TV Shows' : 'Search series' }
                 />
             </form>
         </article>
