@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { useToggle } from '../../useToggle';
 import { getMonth, getName } from '../../helper';
 import { useParams, Link } from 'react-router-dom';
 import { useGlobalContext } from '../../context';
@@ -6,16 +7,17 @@ import { useGlobalContext } from '../../context';
 const ProgramInformation = () => {
     const { id } = useParams();
     const { state, dispatch } = useGlobalContext();
-    const currentProgram = state.watchlist.find((program) => program.id === Number(id));
-    var currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
-    const [toggle, setToggle] = useState(false);
+    const currentProgram = useMemo(() => {
+      return state.watchlist.find((program) => program.id === Number(id));
+    }, []);
+    const [toggle, setToggle] = useToggle();
 
     useEffect(() => {
       dispatch({ type: "SET_PAGE", payload: "episode" });
     }, []);
 
-    useEffect(() => {
-      currentEpisode = currentProgram.episodes.find((episode) => episode.watched === false);
+    const currentEpisode = useMemo(() => {
+      return currentProgram.episodes.find((episode) => episode.watched === false)
     }, [toggle]);
 
     const toggleWatched = (episode, index) => {
@@ -28,7 +30,7 @@ const ProgramInformation = () => {
       if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === true){
         togglePrevious(index);
       }
-      setToggle(!toggle);
+      setToggle();
     }
 
     const togglePrevious = (index) => {

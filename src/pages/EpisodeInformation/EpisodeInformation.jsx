@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useToggle } from '../../useToggle'
 import { Link, useParams } from "react-router-dom";
 import { useGlobalContext } from '../../context';
 import parse from 'html-react-parser';
@@ -53,10 +54,10 @@ const EpisodeInformation = () => {
     const { id } = useParams();
     const { state: { watchlist, previousPage } } = useGlobalContext();
     const { program, currentEpisode, prevEpisode, nextEpisode } = findEpisode();
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useToggle();
     
     const toggleWatched = () => {
-      setToggle(!toggle);
+      setToggle();
       currentEpisode.watched = !currentEpisode.watched;
       if (currentEpisode.watched) {
         program.unseenEpisodes--;
