@@ -21,21 +21,22 @@ const ProgramInformation = ({ watchlist }) => {
     }, [toggle]);
 
     const toggleWatched = (episode, index) => {
-      episode.watched = !episode.watched;
-      if(episode.watched){
-        currentProgram.unseenEpisodes--;
-      }else{
-        currentProgram.unseenEpisodes++;
-      }
-      if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === true){
+      if(currentEpisode && currentEpisode.id !== episode.id && episode.watched === false){
         togglePrevious(index);
+      }else{
+        episode.watched = !episode.watched;
+        if (episode.watched) {
+          currentProgram.unseenEpisodes--;
+        } else {
+          currentProgram.unseenEpisodes++;
+        }
       }
       setToggle();
     }
 
     const togglePrevious = (index) => {
       const episodelist = currentProgram.episodes;
-      for(var i = 0; i < index; i++){
+      for(var i = 0; i <= index; i++){
         if(episodelist[i].watched){
           continue;
         }else{
