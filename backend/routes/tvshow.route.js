@@ -39,7 +39,7 @@ router.route('/add').post((req, res) => {
     });
 
     newShow.save()
-        .then(() => res.json('TV Show added'))
+        .then(() => res.json(`${name} added`))
         .catch((err) => res.status(400).json('Error ' + err));
 });
 
