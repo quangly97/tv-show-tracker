@@ -2,12 +2,14 @@ import React from 'react';
 import { useGlobalContext } from '../../context';
 import { Link } from "react-router-dom";
 import { getMonth, getDay, calculateMillisecondsToDays, get12hrTime, getModulus, getName } from "../../helper";
+import axios from 'axios';
 
 const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, latestEpisode, nextEpisode }) => {
     const { dispatch } = useGlobalContext();
 
     const removeProgram = (id) => {
-        dispatch({ type: 'REMOVE_PROGRAM', payload: id })
+        dispatch({ type: 'REMOVE_PROGRAM', payload: id });
+        axios.delete(`http://localhost:5000/${id}`);
     }
 
     const getLatestAirDate = (airstamp) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../context';
 import parse from 'html-react-parser';
+import axios from 'axios';
 
 const SearchResults = () => {
 
@@ -30,6 +31,8 @@ const SearchResults = () => {
 
             const updatedProgram = { id, image, name, premiered, summary, genres, schedule, status, network, webChannel, episodes, cast, unseenEpisodes: episodeList.length };
             dispatch({ type: 'ADD_PROGRAM', payload: updatedProgram });
+            axios.post('http://localhost:5000/add', updatedProgram)
+              .then(res => console.log(res.data));
         }
     }
 
