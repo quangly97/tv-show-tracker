@@ -24,4 +24,4 @@ const WatchlistSearchResults = () => {
     )
 }
 
-export default WatchlistSearchResults
+export default WatchlistSearchResults;

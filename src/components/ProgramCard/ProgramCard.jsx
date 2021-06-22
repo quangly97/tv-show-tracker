@@ -9,7 +9,7 @@ const ProgramCard = ({ id, name, image, status, schedule, network, webChannel, l
 
     const removeProgram = (id) => {
         dispatch({ type: 'REMOVE_PROGRAM', payload: id });
-        axios.delete(`http://localhost:5000/${id}`);
+        axios.delete(`http://localhost:5000/delete/${id}`);
     }
 
     const getLatestAirDate = (airstamp) => {
