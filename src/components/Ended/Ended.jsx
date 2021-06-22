@@ -4,7 +4,9 @@ import { useGlobalContext } from "../../context";
 
 const Ended = () => {
 
-    const { state: { endedWatchlist } } = useGlobalContext();
+    const { state: { watchlist } } = useGlobalContext();
+
+    const endedWatchlist = watchlist.filter((program) => program.status === 'Ended');
 
     return (
         <div>
