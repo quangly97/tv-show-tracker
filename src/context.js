@@ -17,12 +17,15 @@ const AppProvider = ({ children }) => {
   };
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  useEffect(() => {
-    const watchlist = JSON.parse(localStorage.getItem('watchlist'));
-    const endedWatchlist = JSON.parse(localStorage.getItem("endedWatchlist"));
-    const runningWatchlist = JSON.parse(localStorage.getItem("runningWatchlist"));
-    dispatch({ type: 'INTIALIZE_PROGRAMS', payload: [watchlist, endedWatchlist, runningWatchlist] });
+  useEffect(async () => {
+    const watchlist = await getDatabase();
+    dispatch({ type: 'INTIALIZE_PROGRAMS', payload: watchlist });
   },[]);
+
+  const getDatabase = async () => {
+    const watchlist = await axios.get("http://localhost:5000/");
+    return watchlist.data;
+  }
 
   const getPrograms = async (title) => {
     if (title) {
@@ -55,7 +58,6 @@ const AppProvider = ({ children }) => {
     }else{
       setPrograms([]);
     }
-    
   }
 
   return (

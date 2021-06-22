@@ -26,5 +26,4 @@ app.listen(port, () => {
 
 const tvshowsRouter = require("./routes/tvshow.route");
 
-app.use('/tvshows', tvshowsRouter);
 app.use('/', tvshowsRouter);
