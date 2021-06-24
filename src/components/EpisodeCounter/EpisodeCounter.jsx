@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getName } from '../../helper';
+import axios from 'axios';
 
 const EpisodeCounter = ({ program, setSorted }) => {
 
@@ -19,6 +20,7 @@ const EpisodeCounter = ({ program, setSorted }) => {
         const watched = {...currentEpisode, watched: true}
         setCurrentEpisode(watched);
         setSorted(false);
+        axios.post(`http://localhost:5000/update/${program.id}`, program);
     }
 
     return (

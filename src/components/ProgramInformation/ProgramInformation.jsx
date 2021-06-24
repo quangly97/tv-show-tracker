@@ -3,6 +3,7 @@ import { useToggle } from '../../useToggle';
 import { getMonth, getName } from '../../helper';
 import { useParams, Link } from 'react-router-dom';
 import { useGlobalContext } from '../../context';
+import axios from 'axios';
 
 const ProgramInformation = ({ watchlist }) => {
     const { id } = useParams();
@@ -32,6 +33,7 @@ const ProgramInformation = ({ watchlist }) => {
         }
       }
       setToggle();
+      axios.post(`http://localhost:5000/update/${currentProgram.id}`, currentProgram);
     }
 
     const togglePrevious = (index) => {
