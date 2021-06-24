@@ -80,30 +80,6 @@ router.route('/update/:id').post((req, res) => {
     })
     .then(() => res.json('Updated!'))
     .catch((err) => res.status(400).json('Error: ' + err));
-    /*TVShow.find({id: req.params.id})
-        .then((tvshow) => {
-            console.log(typeof(tvshow));
-            tvshow.id = req.body.id;
-            tvshow.image = req.body.image;
-            tvshow.name = req.body.name;
-            tvshow.premiered = req.body.premiered;
-            tvshow.summary = req.body.summary;
-            tvshow.genres = req.body.genres;
-            tvshow.schedule = req.body.schedule;
-            tvshow.status = req.body.status;
-            tvshow.network = req.body.network;
-            tvshow.webChannel = req.body.webChannel;
-            tvshow.episodes = req.body.episodes;
-            tvshow.cast = req.body.cast;
-            tvshow.unseenEpisodes = req.body.unseenEpisodes;
-
-            tvshow.save()
-                .then(() => res.json('Updated!'))
-                .catch((err) => res.status(400).json('Error ' + err));
-                
-        })
-        .catch((err) => res.status(400).json('Error ' + err));
-        */
 })
 
 module.exports = router;
