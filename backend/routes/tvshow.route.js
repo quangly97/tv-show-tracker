@@ -7,6 +7,12 @@ router.route('/').get((req, res) => {
         .catch((err) => res.status(400).json('Error ' + err));
 });
 
+router.route('/:id').get((req, res) => {
+    TVShow.find({id: req.params.id})
+        .then((tvshow) => res.json(tvshow))
+        .catch((err) => res.status(400).json('Error ' + err));
+});
+
 router.route('/add').post((req, res) => {
     const id = req.body.id;
     const image = req.body.image;
@@ -47,6 +53,33 @@ router.route('/delete/:id').delete((req, res) => {
     TVShow.findOneAndDelete({id: req.params.id})
         .then(() => res.json('TV show deleted'))
         .catch((err) => res.status(400).json('Error' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+    TVShow.findOneAndUpdate({
+        id: req.params.id
+    },
+    {
+        $set: {
+            id: req.body.id,
+            image: req.body.image,
+            name: req.body.name,
+            premiered: req.body.premiered,
+            summary: req.body.summary,
+            genres: req.body.genres,
+            schedule: req.body.schedule,
+            status: req.body.status,
+            network: req.body.network,
+            webChannel: req.body.webChannel,
+            episodes: req.body.episodes,
+            unseenEpisodes: req.body.unseenEpisodes
+        }
+    },
+    {
+        new: true
+    })
+    .then(() => res.json('Updated!'))
+    .catch((err) => res.status(400).json('Error: ' + err));
 })
 
 module.exports = router;
