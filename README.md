@@ -10,6 +10,9 @@ I also wish to include a page where based on the current list of episodes, it wi
 
 ## Project Screenshot
 
+![image](https://user-images.githubusercontent.com/62526327/125135332-c8b72100-e0d6-11eb-8fdf-22371f525463.png)
+
+
 ## Installation and Setup Instructions
 
 Clone this repository. You will need `node` and `npm` onto your machine.
