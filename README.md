@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+## TV Series Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web based application used to allow the user to keep a list of their currently watching TV series and track all episodes they have watched.
 
-## Available Scripts
+## Project Status
 
-In the project directory, you can run:
+The project is currently in development. The styling and layout of the webpage still needs to be developed using CSS. I also have future plans to use the Netflix API and connect it to the webpage to open up Netflix webpage/app to the current episode of that TV series.
 
-### `npm start`
+I also wish to include a page where based on the current list of episodes, it will use the data to generate a list of recommended TV series.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Screenshot
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation and Setup Instructions
 
-### `npm test`
+Clone this repository. You will need `node` and `npm` onto your machine.
+You will also need to create a MongoDB atlas account and add your own `.env` file with the credentials to the backend directory.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+backend/.env:
+```
+ATLAS_URI=mongodb+srv://<name>:<password>@cluster0.mppf1.mongodb.net<database name>?retryWrites=true&w=majority
+ATLAS_DB=<database name>
+PORT=5000
+```
 
-### `npm run build`
+Installation:
+`npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To Start Server:
+`npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To Visit App:
+`localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Reflection
 
-### `npm run eject`
+This was a personal project I thought about building because with the pandemic, I have been watching much more TV shows and have been keeping track on my phone's notepad app. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I wanted to build a web application to allow the user to keep a list of all the TV series they are watching. I wanted the web app to also let me know the current episodes I am on in each TV series, how many episodes I have left of each series and provide me all details about the series and the episodes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+One of the main challenges I ran into was dealing with the asynchronous nature of React hooks and component rendering when updating an object's property. A page would only re-render on state change, and although I had set an object as one of my states, a change in it's property would not re-render the page after every update. This lead me to spend a few days on research of the best methods of React and review when to set states and when not to. I also did some review on how to better manipulate promises returned from functions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The technologies that were implemented in this project are React, React-Router and a significant amount of VanillaJS, JSX and CSS to handle the front end. I chose to use the `create-react-app` boilerplate to minimize setup time and focus more on the implementation of the web page. I used MongoDB atlas to deploy a fully managed MongoDB to store data on the TV series that are added to the user's list. Lastly, for the back end of the web app I used NodeJS and ExpressJS to create a server and handle the connection between the front end to the database.
